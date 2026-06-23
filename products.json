@@ -43,14 +43,6 @@
       "price": "47.990.000₫"
     },
     {
-      "tag": "Pro Studio · Audio/Video",
-      "name": "Mac Studio M4 Max",
-      "image": "",
-      "desc": "Chip M4 Max · 64GB · 2TB · Lý tưởng cho audio/video production",
-      "chips": ["M4 Max", "64GB", "2TB"],
-      "price": "89.990.000₫"
-    },
-    {
       "tag": "Workstation cao cấp",
       "name": "Mac Studio M4 Max",
       "image": "",

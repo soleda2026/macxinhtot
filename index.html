@@ -324,12 +324,16 @@ var ICONS = {
 };
 
 /* ── Render một card sản phẩm ── */
-function makeCard(item, icon) {
+function makeCard(item, fallbackIcon) {
   var chips = (item.chips || []).map(function(c){
     return '<span class="chip">'+c+'</span>';
   }).join('');
+  /* Nếu có trường image thì dùng ảnh, không thì dùng emoji */
+  var imgHtml = item.image
+    ? '<div class="card__img"><img src="'+item.image+'" alt="'+item.name+'" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:12px"></div>'
+    : '<div class="card__img" aria-hidden="true">'+fallbackIcon+'</div>';
   return '<article class="card" itemscope itemtype="https://schema.org/Product">'
-    + '<div class="card__img" aria-hidden="true">'+icon+'</div>'
+    + imgHtml
     + '<div class="card__body">'
     + '<div class="card__tag">'+item.tag+'</div>'
     + '<h3 class="card__name" itemprop="name">'+item.name+'</h3>'

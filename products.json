@@ -1,36 +1,28 @@
 {
   "laptops": [
     {
-      "tag": "Bán chạy #1",
-      "name": "MacBook Pro 14\" M4 Pro",
+      "tag": "Bán nhiều nhất",
+      "name": "MacBook Pro 14\" M1 Pro",
       "image": "",
-      "desc": "Chip M4 Pro · 24GB · 512GB SSD · Liquid Retina XDR · 22h pin",
-      "chips": ["M4 Pro", "24GB", "512GB"],
-      "price": "52.990.000₫"
+      "desc": "Chip M1 Pro · 16GB · 1TB SSD · Liquid Retina XDR ·",
+      "chips": ["M1 Pro", "16GB", "1TB"],
+      "price": "25.990.000₫"
     },
     {
-      "tag": "Nhẹ nhất · M4",
-      "name": "MacBook Air 15\" M4",
+      "tag": "Nhẹ nhất, Siêu mỏng, Sky Blue· M5",
+      "name": "MacBook Air 13\" M5",
       "image": "",
-      "desc": "Chip M4 · 16GB · 256GB SSD · Liquid Retina · 18h pin · 1.51kg",
-      "chips": ["M4", "16GB", "15\""],
-      "price": "35.990.000₫"
+      "desc": "Chip M5 · 16GB · 512GB SSD · Liquid Retina · 18h pin · 1.51kg",
+      "chips": ["M5", "16GB", "13\""],
+      "price": "28.990.000₫"
     },
     {
-      "tag": "Siêu mỏng · Sky Blue",
-      "name": "MacBook Air 13\" M4",
+      "tag": "Pro · Hiệu năng cao",
+      "name": "MacBook Pro 16\" M4 Pro , Máy MDM",
       "image": "",
-      "desc": "Chip M4 · 16GB · 256GB SSD · 1.24kg · 18h pin · Màu Sky Blue mới",
-      "chips": ["M4", "16GB", "13\""],
-      "price": "29.990.000₫"
-    },
-    {
-      "tag": "Pro · Đỉnh hiệu năng",
-      "name": "MacBook Pro 16\" M4 Max",
-      "image": "",
-      "desc": "Chip M4 Max · 48GB · 1TB · 16.2\" ProMotion 120Hz · 24h pin",
-      "chips": ["M4 Max", "48GB", "1TB"],
-      "price": "89.990.000₫"
+      "desc": "Chip M4 Pro · 48GB · 512GB · 16.2\" ProMotion 120Hz ·",
+      "chips": ["M4 Pro", "48GB", "512GB"],
+      "price": "45.990.000₫"
     }
   ],
   "desktops": [
@@ -59,30 +51,22 @@
       "price": "89.990.000₫"
     },
     {
-      "tag": "Workstation tối thượng",
-      "name": "Mac Pro M4 Ultra",
+      "tag": "Workstation cao cấp",
+      "name": "Mac Studio M4 Max",
       "image": "",
-      "desc": "M4 Ultra · 192GB · 4TB · PCIe mở rộng · Đỉnh cao sáng tạo",
-      "chips": ["M4 Ultra", "192GB"],
-      "price": "199.990.000₫"
+      "desc": "M4 Max · 36GB · 512GB · Đỉnh cao sáng tạo",
+      "chips": ["M4 Max", "36GB"],
+      "price": "59.990.000₫"
     }
   ],
   "harddrives": [
     {
       "tag": "SSD Di động · Nhanh nhất",
-      "name": "Samsung T9 2TB",
+      "name": "OWC Express 1M2 2TB",
       "image": "",
-      "desc": "USB 3.2 Gen 2×2 · 2,000 MB/s · Chống va đập · IP65",
-      "chips": ["2TB", "2000 MB/s", "IP65"],
-      "price": "3.490.000₫"
-    },
-    {
-      "tag": "NAS · Studio & Gia đình",
-      "name": "Synology DS923+",
-      "image": "",
-      "desc": "4-Bay NAS · AMD Ryzen · Time Machine cho Mac · Mở rộng tới 108TB",
-      "chips": ["4-Bay", "108TB max"],
-      "price": "18.500.000₫"
+      "desc": "USB_TypeC 4.0 · 2,800 MB/s · Nhôm nguyên khối, tản nhiệt thụ động",
+      "chips": ["2TB", "2800 MB/s",],
+      "price": "7.990.000₫"
     },
     {
       "tag": "HDD · Backup dữ liệu",
@@ -94,11 +78,11 @@
     },
     {
       "tag": "SSD NVMe · Nâng cấp Mac",
-      "name": "Samsung 990 Pro 2TB",
+      "name": "Apple SSD Kit Pro 2TB",
       "image": "",
-      "desc": "PCIe 4.0 NVMe · 7,450 MB/s đọc · Nâng cấp Mac Pro và Mac Studio",
-      "chips": ["PCIe 4.0", "7450 MB/s"],
-      "price": "2.990.000₫"
+      "desc": "Apple NVMe · 3,500 MB/s đọc · Nâng cấp Mac Pro 2019 và iMac Pro",
+      "chips": ["Apple SSD", "3500 MB/s"],
+      "price": "4.990.000₫"
     }
   ],
   "accessories": [
@@ -119,12 +103,12 @@
       "price": "2.690.000₫"
     },
     {
-      "tag": "Hub · Thunderbolt 4",
-      "name": "CalDigit TS4 Dock",
+      "tag": "Hub · USB_TypeC 4.0",
+      "name": "RayCue Hub & Stand",
       "image": "",
-      "desc": "18 cổng · Thunderbolt 4 · 98W sạc MacBook · 4K@144Hz",
+      "desc": "1 cổng USB A · Khe cắm SSD Nvme",
       "chips": [],
-      "price": "8.990.000₫"
+      "price": "1.990.000₫"
     },
     {
       "tag": "Màn hình · 5K Pro",

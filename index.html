@@ -3,241 +3,409 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mắc Xinh Tốt — Apple chính hãng tại TP.HCM</title>
+<title>Mắc Xinh Tốt — Chuyên gia Mac của bạn tại TP.HCM</title>
+<meta name="description" content="Mắc Xinh Tốt — chuyên cung cấp MacBook, Mac mini, iMac, Mac Studio, Hard Drive và phụ kiện Apple chính hãng tại TP.HCM. Giao hàng tận nơi, bảo hành đầy đủ.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://macxinhtot.com/">
+<meta property="og:title" content="Mắc Xinh Tốt — Chuyên gia Mac của bạn">
+<meta property="og:description" content="MacBook, Mac mini, iMac, Mac Studio và phụ kiện Apple chính hãng tại TP.HCM.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://macxinhtot.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mắc Xinh Tốt — Chuyên gia Mac của bạn">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Mắc Xinh Tốt","url":"https://macxinhtot.com","description":"Chuyên cung cấp sản phẩm Apple chính hãng tại TP.HCM","address":{"@type":"PostalAddress","addressLocality":"Thành phố Hồ Chí Minh","addressCountry":"VN"}}
+</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#fbfbfd;--bg2:#f5f5f7;--text:#1d1d1f;--text2:#6e6e73;--blue:#0071e3;--blue-h:#0077ed;--card:#fff;--border:#d2d2d7}
-body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:17px}
-
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.88);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:0.5px solid rgba(0,0,0,0.08)}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 20px}
-.nav-logo{font-size:18px;font-weight:800;letter-spacing:-0.5px;color:#1d1d1f;text-decoration:none;margin-right:24px;flex-shrink:0}
-.nav-logo em{font-style:normal;color:#0071e3}
-.nav-links{display:flex;flex:1}
-.nav-links a{color:#6e6e73;text-decoration:none;font-size:13px;padding:0 13px;height:52px;display:flex;align-items:center;transition:color .15s;white-space:nowrap}
-.nav-links a:hover,.nav-links a.active{color:#1d1d1f}
-.nav-right{display:flex;gap:6px}
-.nav-icon-btn{background:none;border:none;cursor:pointer;color:#6e6e73;padding:6px;font-size:18px;border-radius:50%;transition:background .15s}
-.nav-icon-btn:hover{background:rgba(0,0,0,0.06)}
-
-.hero{background:#fff;text-align:center;padding:80px 24px 64px;border-bottom:0.5px solid var(--border)}
-.hero-eyebrow{font-size:14px;color:#0071e3;font-weight:500;margin-bottom:10px;letter-spacing:.8px;text-transform:uppercase}
-.hero-title{font-size:clamp(38px,6vw,62px);font-weight:700;letter-spacing:-2px;line-height:1.06;margin-bottom:14px}
-.hero-title em{font-style:normal;color:#0071e3}
-.hero-sub{font-size:19px;color:#6e6e73;max-width:500px;margin:0 auto 32px;line-height:1.5;font-weight:300}
-.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:#0071e3;color:#fff;border:none;border-radius:980px;padding:13px 30px;font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s;display:inline-block}
-.btn-primary:hover{background:#0077ed}
-.btn-ghost{color:#0071e3;border:none;background:none;border-radius:980px;padding:13px 20px;font-size:15px;cursor:pointer;text-decoration:none;transition:background .15s;display:inline-block}
-.btn-ghost:hover{background:rgba(0,113,227,0.07)}
-.hero-badges{display:flex;gap:10px;justify-content:center;margin-top:22px;flex-wrap:wrap}
-.badge{background:var(--bg2);border-radius:980px;padding:6px 16px;font-size:12px;color:#6e6e73;display:flex;align-items:center;gap:5px}
-.badge span{color:#34c759;font-weight:600}
-
-.cat-strip{background:var(--bg2);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border)}
-.cat-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.cat-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px;gap:8px;cursor:pointer;border-right:0.5px solid var(--border);transition:background .15s;text-decoration:none;color:var(--text)}
-.cat-item:last-child{border-right:none}
-.cat-item:hover{background:#eaeaec}
-.cat-icon{font-size:28px}
-.cat-label{font-size:14px;font-weight:500}
-.cat-desc{font-size:11px;color:#6e6e73;text-align:center}
-
-.section{max-width:1200px;margin:0 auto;padding:56px 24px}
-.section-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.section-title{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-0.8px}
-.section-sub{font-size:14px;color:#6e6e73;margin-bottom:32px}
-.see-all{font-size:14px;color:#0071e3;background:none;border:none;cursor:pointer}
-
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
-.card{background:#fff;border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;border:0.5px solid var(--border);display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.10)}
-.card-img{background:var(--bg2);aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:60px;padding:20px}
-.card-body{padding:14px 18px 18px;flex:1;display:flex;flex-direction:column}
-.card-tag{font-size:11px;color:#0071e3;font-weight:500;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
-.card-name{font-size:16px;font-weight:600;letter-spacing:-.2px;margin-bottom:3px}
-.card-desc{font-size:12px;color:#6e6e73;flex:1;margin-bottom:12px;line-height:1.4}
-.card-chips{margin-bottom:12px;display:flex;flex-wrap:wrap;gap:4px}
-.chip{background:var(--bg2);border-radius:5px;padding:2px 8px;font-size:11px;color:#6e6e73}
-.card-foot{display:flex;align-items:center;justify-content:space-between}
-.price{font-size:16px;font-weight:600}
-.btn-buy{background:#0071e3;color:#fff;border:none;border-radius:980px;padding:6px 16px;font-size:12px;cursor:pointer;transition:background .15s}
-.btn-buy:hover{background:#0077ed}
-
-.bg-gray{background:var(--bg2);border-top:0.5px solid var(--border)}
-.section-wrap{max-width:1200px;margin:0 auto;padding:56px 24px}
-
-.apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-top:24px}
-.app-card{background:#fff;border-radius:18px;padding:20px;border:0.5px solid var(--border);display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.app-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-.app-icon{font-size:36px;flex-shrink:0;width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--bg2)}
-.app-info{flex:1}
-.app-cat{font-size:11px;color:#0071e3;font-weight:500;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
-.app-name{font-size:15px;font-weight:600;margin-bottom:3px}
-.app-desc{font-size:12px;color:#6e6e73;margin-bottom:10px;line-height:1.4}
-.app-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:0.8px solid var(--border);border-radius:980px;padding:5px 13px;font-size:12px;cursor:pointer;color:#0071e3;transition:all .15s;text-decoration:none}
-.app-btn:hover{background:rgba(0,113,227,0.07);border-color:#0071e3}
-.app-os{font-size:10px;color:#6e6e73;margin-left:4px}
-
-.tab-bar{display:flex;border-bottom:0.5px solid var(--border);margin-bottom:28px;overflow-x:auto}
-.tab{padding:11px 18px;font-size:14px;color:#6e6e73;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;transition:color .15s}
-.tab.active{color:#1d1d1f;border-bottom-color:#1d1d1f}
-
-footer{background:#f5f5f7;border-top:0.5px solid var(--border);padding:36px 24px 20px}
-.foot-inner{max-width:1200px;margin:0 auto}
-.foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:28px}
-.foot-col h4{font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px}
-.foot-col a{display:block;font-size:12px;color:#6e6e73;text-decoration:none;margin-bottom:7px}
-.foot-col a:hover{color:var(--text)}
-.foot-bottom{border-top:0.5px solid var(--border);padding-top:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.foot-copy{font-size:12px;color:#6e6e73}
-.foot-links{display:flex;gap:14px}
-.foot-links a{font-size:12px;color:#6e6e73;text-decoration:none}
-.foot-links a:hover{color:var(--text)}
-
-@media(max-width:700px){
-  .cat-inner{grid-template-columns:repeat(2,1fr)}
-  .cat-item:nth-child(2){border-right:none}
-  .cat-item:nth-child(3){border-right:0.5px solid var(--border)}
-  .foot-cols{grid-template-columns:repeat(2,1fr)}
-  .nav-links a{font-size:12px;padding:0 8px}
+/* ===== RESET & TOKENS ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
+  --c-text:#1d1d1f;--c-muted:#6e6e73;
+  --c-blue:#0071e3;--c-blue-h:#0077ed;--c-green:#34c759;
+  --c-border:#d2d2d7;
+  --r-card:18px;--r-pill:980px;
+  --sh-card:0 2px 12px rgba(0,0,0,.08);--sh-card-h:0 14px 40px rgba(0,0,0,.12);
+  --nav-h:52px;
 }
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--c-bg);color:var(--c-text);font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid rgba(0,0,0,.1)}
+.nav__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:100%;padding:0 20px}
+.nav__logo{display:flex;align-items:flex-end;gap:8px;margin-right:22px;flex-shrink:0;text-decoration:none}
+.nav__logo img{height:28px;width:auto;filter:brightness(0)}
+.nav__tagline{font-size:11px;color:var(--c-muted);padding-bottom:1px;white-space:nowrap}
+.nav__links{display:flex;flex:1}
+.nav__links a{color:var(--c-muted);font-size:13px;padding:0 11px;height:var(--nav-h);display:flex;align-items:center;transition:color .15s;white-space:nowrap}
+.nav__links a:hover,.nav__links a.is-active{color:var(--c-text)}
+.nav__actions{display:flex;gap:4px;margin-left:auto}
+.nav__btn{background:none;border:none;color:var(--c-muted);padding:8px;border-radius:50%;font-size:17px;line-height:1;transition:background .15s}
+.nav__btn:hover{background:rgba(0,0,0,.06)}
+
+/* ===== HERO ===== */
+.hero{background:var(--c-white);text-align:center;padding:80px 24px 64px;border-bottom:.5px solid var(--c-border)}
+.hero__sub{font-size:19px;color:var(--c-muted);max-width:460px;margin:0 auto 32px;line-height:1.5;font-weight:300}
+.hero__ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-p{display:inline-block;background:var(--c-blue);color:#fff;border:none;border-radius:var(--r-pill);padding:13px 28px;font-size:15px;font-family:inherit;transition:background .15s}
+.btn-p:hover{background:var(--c-blue-h)}
+.btn-g{display:inline-block;color:var(--c-blue);background:none;border:none;border-radius:var(--r-pill);padding:13px 18px;font-size:15px;font-family:inherit;transition:background .15s}
+.btn-g:hover{background:rgba(0,113,227,.07)}
+.hero__badges{display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.badge{background:var(--c-bg2);border-radius:var(--r-pill);padding:6px 14px;font-size:12px;color:var(--c-muted);display:flex;align-items:center;gap:5px}
+.badge__ok{color:var(--c-green);font-weight:700}
+
+/* ===== CATS ===== */
+.cats{background:var(--c-bg2);border-top:.5px solid var(--c-border);border-bottom:.5px solid var(--c-border)}
+.cats__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.cats__item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 16px;gap:7px;border-right:.5px solid var(--c-border);text-decoration:none;color:var(--c-text);transition:background .15s}
+.cats__item:last-child{border-right:none}
+.cats__item:hover{background:#eaeaec}
+.cats__icon{font-size:26px;line-height:1}
+.cats__label{font-size:13px;font-weight:500}
+.cats__desc{font-size:11px;color:var(--c-muted);text-align:center}
+
+/* ===== SECTION ===== */
+.sec{max-width:1200px;margin:0 auto;padding:52px 24px}
+.sec-bg{background:var(--c-bg2);border-top:.5px solid var(--c-border)}
+.sec__hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.sec__title{font-size:clamp(20px,2.8vw,28px);font-weight:600;letter-spacing:-.6px}
+.sec__sub{font-size:13px;color:var(--c-muted);margin-bottom:28px}
+.sec__link{font-size:13px;color:var(--c-blue);background:none;border:none;white-space:nowrap}
+
+/* ===== TABS ===== */
+.tabs{display:flex;border-bottom:.5px solid var(--c-border);margin-bottom:24px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:10px 15px;font-size:13px;color:var(--c-muted);background:none;border:none;border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit;transition:color .15s}
+.tab.is-active{color:var(--c-text);border-bottom-color:var(--c-text)}
+
+/* ===== GRID / CARD ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(222px,1fr));gap:12px}
+.card{background:var(--c-white);border-radius:var(--r-card);border:.5px solid var(--c-border);display:flex;flex-direction:column;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-card-h)}
+.card__img{background:var(--c-bg2);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:54px}
+.card__body{padding:13px 15px 15px;flex:1;display:flex;flex-direction:column}
+.card__tag{font-size:10px;color:var(--c-blue);font-weight:600;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.card__name{font-size:15px;font-weight:600;letter-spacing:-.2px;margin-bottom:3px}
+.card__desc{font-size:11px;color:var(--c-muted);flex:1;margin-bottom:10px;line-height:1.45}
+.card__chips{margin-bottom:10px;display:flex;flex-wrap:wrap;gap:3px}
+.chip{background:var(--c-bg2);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--c-muted)}
+.card__foot{display:flex;align-items:center;justify-content:space-between}
+.card__price{font-size:15px;font-weight:600}
+.btn-buy{background:var(--c-blue);color:#fff;border:none;border-radius:var(--r-pill);padding:5px 14px;font-size:11px;font-family:inherit;transition:background .15s;text-decoration:none;display:inline-block}
+.btn-buy:hover{background:var(--c-blue-h)}
+
+/* ===== APPS ===== */
+.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:12px;margin-top:20px}
+.app{background:var(--c-white);border-radius:var(--r-card);padding:18px;border:.5px solid var(--c-border);display:flex;gap:13px;align-items:flex-start;transition:transform .18s,box-shadow .18s}
+.app:hover{transform:translateY(-2px);box-shadow:var(--sh-card)}
+.app__icon{font-size:30px;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--c-bg2);flex-shrink:0}
+.app__cat{font-size:10px;color:var(--c-blue);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.app__name{font-size:14px;font-weight:600;margin-bottom:2px}
+.app__desc{font-size:11px;color:var(--c-muted);margin-bottom:8px;line-height:1.4}
+.app__dl{display:inline-flex;align-items:center;gap:4px;background:none;border:.8px solid var(--c-border);border-radius:var(--r-pill);padding:4px 12px;font-size:11px;color:var(--c-blue);font-family:inherit;text-decoration:none;transition:all .15s}
+.app__dl:hover{background:rgba(0,113,227,.07);border-color:var(--c-blue)}
+.app__os{font-size:10px;color:var(--c-muted);margin-left:3px}
+
+/* ===== FORM ===== */
+.contact-wrap{background:var(--c-white);border-top:.5px solid var(--c-border)}
+.form{max-width:548px;margin:0 auto}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form__group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.form__label{font-size:12px;font-weight:500;color:var(--c-muted)}
+.form__input,.form__select,.form__textarea{width:100%;padding:10px 13px;border:.8px solid var(--c-border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--c-text);background:var(--c-bg);outline:none;transition:border-color .15s,box-shadow .15s}
+.form__input:focus,.form__select:focus,.form__textarea:focus{border-color:var(--c-blue);box-shadow:0 0 0 3px rgba(0,113,227,.12)}
+.form__textarea{resize:vertical;min-height:92px}
+.form__honey{display:none}
+.form__submit{width:100%;background:var(--c-blue);color:#fff;border:none;border-radius:var(--r-pill);padding:13px;font-size:15px;font-family:inherit;font-weight:500;transition:background .15s;margin-top:4px}
+.form__submit:hover{background:var(--c-blue-h)}
+.form__note{font-size:11px;color:var(--c-muted);text-align:center;margin-top:10px}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--c-bg2);border-top:.5px solid var(--c-border);padding:32px 24px 18px}
+.footer__inner{max-width:1200px;margin:0 auto}
+.footer__cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:24px}
+.footer__col h4{font-size:11px;font-weight:600;color:var(--c-text);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.footer__col a{display:block;font-size:12px;color:var(--c-muted);margin-bottom:6px;transition:color .12s}
+.footer__col a:hover{color:var(--c-text)}
+.footer__bottom{border-top:.5px solid var(--c-border);padding-top:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer__copy{font-size:11px;color:var(--c-muted)}
+.footer__links{display:flex;gap:12px}
+.footer__links a{font-size:11px;color:var(--c-muted)}
+.footer__links a:hover{color:var(--c-text)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .cats__inner{grid-template-columns:repeat(2,1fr)}
+  .cats__item:nth-child(2){border-right:none}
+  .cats__item:nth-child(3){border-right:.5px solid var(--c-border)}
+  .footer__cols{grid-template-columns:repeat(2,1fr)}
+  .form__row{grid-template-columns:1fr}
+  .nav__links a{font-size:12px;padding:0 7px}
+  .nav__tagline{display:none}
+}
+@media(max-width:480px){
+  .hero{padding:48px 16px 40px}
+  .nav__links a{font-size:11px;padding:0 5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="#">Mắc <em>Xinh</em> Tốt</a>
-    <div class="nav-links">
-      <a href="#laptops" class="active">Laptops</a>
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Menu chính">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/" aria-label="Mắc Xinh Tốt — Trang chủ">
+      <!-- Đặt file logo.jpg cùng thư mục với index.html -->
+      <img src="MacXinhTot-01.jpg" alt="Mắc Xinh Tốt" width="120" height="28" loading="eager">
+      <span class="nav__tagline">Chuyên gia Mac của bạn</span>
+    </a>
+    <div class="nav__links">
+      <a href="#laptops" class="is-active">Laptops</a>
       <a href="#desktops">Desktops</a>
       <a href="#harddrive">Hard Drive</a>
       <a href="#accessories">Accessories</a>
       <a href="#apps">Apps hữu ích</a>
+      <a href="#contact">Liên hệ</a>
     </div>
-    <div class="nav-right">
-      <button class="nav-icon-btn">🔍</button>
-      <button class="nav-icon-btn">🛒</button>
+    <div class="nav__actions">
+      <button class="nav__btn" aria-label="Tìm kiếm">🔍</button>
+      <button class="nav__btn" aria-label="Giỏ hàng">🛒</button>
     </div>
   </div>
 </nav>
 
-<section class="hero">
-  <p class="hero-eyebrow">Chỉ bán Apple · Giao tận nơi tại TP.HCM</p>
-  <h1 class="hero-title">Máy Apple chính hãng.<br><em>Giá tốt nhất HCM.</em></h1>
-  <p class="hero-sub">MacBook, Mac mini, iMac, Mac Studio và phụ kiện Apple — tuyển chọn kỹ, bảo hành đầy đủ.</p>
-  <div class="hero-ctas">
-    <a class="btn-primary" href="#laptops">Xem sản phẩm</a>
-    <a class="btn-ghost" href="#apps">Apps hữu ích →</a>
+<!-- HERO -->
+<section class="hero" aria-label="Giới thiệu">
+  <p class="hero__sub">MacBook, Mac mini, iMac, Mac Studio và phụ kiện Apple —<br>tuyển chọn kỹ, bảo hành đầy đủ.</p>
+  <div class="hero__ctas">
+    <a class="btn-p" href="#laptops">Xem sản phẩm</a>
+    <a class="btn-g" href="#apps">Apps hữu ích →</a>
   </div>
-  <div class="hero-badges">
-    <div class="badge"><span>✓</span> Bảo hành chính hãng Apple</div>
-    <div class="badge"><span>✓</span> Giao hàng trong ngày — HCM</div>
-    <div class="badge"><span>✓</span> Hỗ trợ setup tận nơi</div>
+  <div class="hero__badges">
+    <div class="badge"><span class="badge__ok">✓</span> Bảo hành chính hãng Apple</div>
+    <div class="badge"><span class="badge__ok">✓</span> Giao hàng tận nơi tại HCM</div>
+    <div class="badge"><span class="badge__ok">✓</span> Hỗ trợ setup tận nơi</div>
   </div>
 </section>
 
-<div class="cat-strip">
-  <div class="cat-inner">
-    <a class="cat-item" href="#laptops"><div class="cat-icon">💻</div><div class="cat-label">Laptops</div><div class="cat-desc">MacBook Air, MacBook Pro</div></a>
-    <a class="cat-item" href="#desktops"><div class="cat-icon">🖥️</div><div class="cat-label">Desktops</div><div class="cat-desc">Mac mini, iMac, Mac Studio</div></a>
-    <a class="cat-item" href="#harddrive"><div class="cat-icon">💾</div><div class="cat-label">Hard Drive</div><div class="cat-desc">SSD, HDD, NAS, External</div></a>
-    <a class="cat-item" href="#accessories"><div class="cat-icon">🎧</div><div class="cat-label">Accessories</div><div class="cat-desc">AirPods, Magic, Hub, Màn hình</div></a>
+<!-- CATS -->
+<nav class="cats" aria-label="Danh mục">
+  <div class="cats__inner">
+    <a class="cats__item" href="#laptops"><div class="cats__icon" aria-hidden="true">💻</div><div class="cats__label">Laptops</div><div class="cats__desc">MacBook Air, MacBook Pro</div></a>
+    <a class="cats__item" href="#desktops"><div class="cats__icon" aria-hidden="true">🖥️</div><div class="cats__label">Desktops</div><div class="cats__desc">Mac mini, iMac, Mac Studio</div></a>
+    <a class="cats__item" href="#harddrive"><div class="cats__icon" aria-hidden="true">💾</div><div class="cats__label">Hard Drive</div><div class="cats__desc">SSD, HDD, NAS, External</div></a>
+    <a class="cats__item" href="#accessories"><div class="cats__icon" aria-hidden="true">🎧</div><div class="cats__label">Accessories</div><div class="cats__desc">AirPods, Magic, Hub, Display</div></a>
   </div>
-</div>
+</nav>
 
-<div id="laptops" class="section">
-  <div class="section-hdr"><div><h2 class="section-title">Laptops</h2><p class="section-sub">MacBook Air và MacBook Pro — cho mọi nhu cầu sáng tạo và làm việc</p></div><button class="see-all">Xem tất cả →</button></div>
-  <div class="tab-bar"><button class="tab active">Tất cả</button><button class="tab">MacBook Air</button><button class="tab">MacBook Pro 14"</button><button class="tab">MacBook Pro 16"</button></div>
-  <div class="product-grid">
-    <div class="card"><div class="card-img">💻</div><div class="card-body"><div class="card-tag">Bán chạy #1</div><div class="card-name">MacBook Pro 14" M4 Pro</div><div class="card-desc">Chip M4 Pro · 24GB · 512GB SSD · Liquid Retina XDR · 22h pin</div><div class="card-chips"><span class="chip">M4 Pro</span><span class="chip">24GB</span><span class="chip">512GB</span></div><div class="card-foot"><div class="price">52.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-    <div class="card"><div class="card-img">💻</div><div class="card-body"><div class="card-tag">Nhẹ nhất · M4</div><div class="card-name">MacBook Air 15" M4</div><div class="card-desc">Chip M4 · 16GB · 256GB SSD · Liquid Retina · 18h pin · 1.51kg</div><div class="card-chips"><span class="chip">M4</span><span class="chip">16GB</span><span class="chip">15"</span></div><div class="card-foot"><div class="price">35.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-    <div class="card"><div class="card-img">💻</div><div class="card-body"><div class="card-tag">Mới nhất · Siêu mỏng</div><div class="card-name">MacBook Air 13" M4</div><div class="card-desc">Chip M4 · 16GB · 256GB SSD · Chỉ 1.24kg · 18h pin · Sky Blue mới</div><div class="card-chips"><span class="chip">M4</span><span class="chip">16GB</span><span class="chip">13"</span></div><div class="card-foot"><div class="price">29.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-    <div class="card"><div class="card-img">💻</div><div class="card-body"><div class="card-tag">Pro · Đỉnh hiệu năng</div><div class="card-name">MacBook Pro 16" M4 Max</div><div class="card-desc">Chip M4 Max · 48GB · 1TB SSD · 16.2" ProMotion 120Hz · 24h pin</div><div class="card-chips"><span class="chip">M4 Max</span><span class="chip">48GB</span><span class="chip">1TB</span></div><div class="card-foot"><div class="price">89.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
+<main>
+
+<!-- LAPTOPS -->
+<section id="laptops" class="sec">
+  <div class="sec__hdr"><div><h2 class="sec__title">Laptops</h2><p class="sec__sub">MacBook Air và MacBook Pro — cho mọi nhu cầu sáng tạo và làm việc</p></div><a class="sec__link" href="#contact">Hỏi tư vấn →</a></div>
+  <div class="tabs" role="tablist"><button class="tab is-active" role="tab">Tất cả</button><button class="tab" role="tab">MacBook Air</button><button class="tab" role="tab">MacBook Pro 14"</button><button class="tab" role="tab">MacBook Pro 16"</button></div>
+  <div class="grid">
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">💻</div>
+      <div class="card__body"><div class="card__tag">Bán chạy #1</div><h3 class="card__name" itemprop="name">MacBook Pro 14" M4 Pro</h3><p class="card__desc" itemprop="description">Chip M4 Pro · 24GB · 512GB SSD · Liquid Retina XDR · 22h pin</p><div class="card__chips"><span class="chip">M4 Pro</span><span class="chip">24GB</span><span class="chip">512GB</span></div><div class="card__foot"><span class="card__price">52.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">💻</div>
+      <div class="card__body"><div class="card__tag">Nhẹ nhất · M4</div><h3 class="card__name" itemprop="name">MacBook Air 15" M4</h3><p class="card__desc" itemprop="description">Chip M4 · 16GB · 256GB SSD · Liquid Retina · 18h pin · 1.51kg</p><div class="card__chips"><span class="chip">M4</span><span class="chip">16GB</span><span class="chip">15"</span></div><div class="card__foot"><span class="card__price">35.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">💻</div>
+      <div class="card__body"><div class="card__tag">Siêu mỏng · Sky Blue</div><h3 class="card__name" itemprop="name">MacBook Air 13" M4</h3><p class="card__desc" itemprop="description">Chip M4 · 16GB · 256GB SSD · 1.24kg · 18h pin · Màu Sky Blue mới</p><div class="card__chips"><span class="chip">M4</span><span class="chip">16GB</span><span class="chip">13"</span></div><div class="card__foot"><span class="card__price">29.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">💻</div>
+      <div class="card__body"><div class="card__tag">Pro · Đỉnh hiệu năng</div><h3 class="card__name" itemprop="name">MacBook Pro 16" M4 Max</h3><p class="card__desc" itemprop="description">Chip M4 Max · 48GB · 1TB · 16.2" ProMotion 120Hz · 24h pin</p><div class="card__chips"><span class="chip">M4 Max</span><span class="chip">48GB</span><span class="chip">1TB</span></div><div class="card__foot"><span class="card__price">89.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
   </div>
-</div>
+</section>
 
-<div id="desktops" class="bg-gray">
-  <div class="section-wrap">
-    <div class="section-hdr"><div><h2 class="section-title">Desktops</h2><p class="section-sub">Mac mini, iMac, Mac Studio và Mac Pro — sức mạnh cho văn phòng và studio</p></div><button class="see-all">Xem tất cả →</button></div>
-    <div class="product-grid">
-      <div class="card"><div class="card-img">🟦</div><div class="card-body"><div class="card-tag">Compact · Mạnh mẽ</div><div class="card-name">Mac mini M4</div><div class="card-desc">Chip M4 · 16GB · 256GB SSD · 3x Thunderbolt 4 · Nhỏ gọn, tiết kiệm điện</div><div class="card-chips"><span class="chip">M4</span><span class="chip">16GB</span><span class="chip">3x TB4</span></div><div class="card-foot"><div class="price">16.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-      <div class="card"><div class="card-img">🖥️</div><div class="card-body"><div class="card-tag">All-in-One · 4.5K Retina</div><div class="card-name">iMac 24" M4</div><div class="card-desc">Chip M4 · 24GB · 1TB · Màn Retina 4.5K · Mỏng 11.5mm · 7 màu sắc</div><div class="card-chips"><span class="chip">M4</span><span class="chip">4.5K</span><span class="chip">24GB</span></div><div class="card-foot"><div class="price">47.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-      <div class="card"><div class="card-img">⬛</div><div class="card-body"><div class="card-tag">Pro Studio · Audio/Video</div><div class="card-name">Mac Studio M4 Max</div><div class="card-desc">Chip M4 Max · 64GB · 2TB · Lý tưởng cho audio/video production chuyên nghiệp</div><div class="card-chips"><span class="chip">M4 Max</span><span class="chip">64GB</span><span class="chip">2TB</span></div><div class="card-foot"><div class="price">89.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-      <div class="card"><div class="card-img">🔲</div><div class="card-body"><div class="card-tag">Workstation tối thượng</div><div class="card-name">Mac Pro M4 Ultra</div><div class="card-desc">M4 Ultra · 192GB · 4TB · PCIe mở rộng · Đỉnh cao sáng tạo chuyên nghiệp</div><div class="card-chips"><span class="chip">M4 Ultra</span><span class="chip">192GB</span></div><div class="card-foot"><div class="price">199.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
+<!-- DESKTOPS -->
+<div class="sec-bg"><section id="desktops" class="sec">
+  <div class="sec__hdr"><div><h2 class="sec__title">Desktops</h2><p class="sec__sub">Mac mini, iMac, Mac Studio và Mac Pro — sức mạnh cho văn phòng và studio</p></div><a class="sec__link" href="#contact">Hỏi tư vấn →</a></div>
+  <div class="grid">
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🟦</div>
+      <div class="card__body"><div class="card__tag">Compact · Mạnh mẽ</div><h3 class="card__name" itemprop="name">Mac mini M4</h3><p class="card__desc" itemprop="description">Chip M4 · 16GB · 256GB SSD · 3× Thunderbolt 4 · Nhỏ gọn, tiết kiệm điện</p><div class="card__chips"><span class="chip">M4</span><span class="chip">16GB</span><span class="chip">3× TB4</span></div><div class="card__foot"><span class="card__price">16.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🖥️</div>
+      <div class="card__body"><div class="card__tag">All-in-One · 4.5K Retina</div><h3 class="card__name" itemprop="name">iMac 24" M4</h3><p class="card__desc" itemprop="description">Chip M4 · 24GB · 1TB · Retina 4.5K · Mỏng 11.5mm · 7 màu sắc</p><div class="card__chips"><span class="chip">M4</span><span class="chip">4.5K</span><span class="chip">24GB</span></div><div class="card__foot"><span class="card__price">47.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">⬛</div>
+      <div class="card__body"><div class="card__tag">Pro Studio · Audio/Video</div><h3 class="card__name" itemprop="name">Mac Studio M4 Max</h3><p class="card__desc" itemprop="description">Chip M4 Max · 64GB · 2TB · Lý tưởng cho audio/video production</p><div class="card__chips"><span class="chip">M4 Max</span><span class="chip">64GB</span><span class="chip">2TB</span></div><div class="card__foot"><span class="card__price">89.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🔲</div>
+      <div class="card__body"><div class="card__tag">Workstation tối thượng</div><h3 class="card__name" itemprop="name">Mac Pro M4 Ultra</h3><p class="card__desc" itemprop="description">M4 Ultra · 192GB · 4TB · PCIe mở rộng · Đỉnh cao sáng tạo</p><div class="card__chips"><span class="chip">M4 Ultra</span><span class="chip">192GB</span></div><div class="card__foot"><span class="card__price">199.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+  </div>
+</section></div>
+
+<!-- HARD DRIVE -->
+<section id="harddrive" class="sec">
+  <div class="sec__hdr"><div><h2 class="sec__title">Hard Drive &amp; Storage</h2><p class="sec__sub">Lưu trữ tốc độ cao, an toàn — hoàn hảo với hệ sinh thái Apple</p></div><a class="sec__link" href="#contact">Hỏi tư vấn →</a></div>
+  <div class="tabs" role="tablist"><button class="tab is-active" role="tab">Tất cả</button><button class="tab" role="tab">SSD Di động</button><button class="tab" role="tab">NAS</button><button class="tab" role="tab">HDD External</button></div>
+  <div class="grid">
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">💾</div>
+      <div class="card__body"><div class="card__tag">SSD Di động · Nhanh nhất</div><h3 class="card__name" itemprop="name">Samsung T9 2TB</h3><p class="card__desc" itemprop="description">USB 3.2 Gen 2×2 · 2,000 MB/s · Chống va đập · IP65</p><div class="card__chips"><span class="chip">2TB</span><span class="chip">2000 MB/s</span><span class="chip">IP65</span></div><div class="card__foot"><span class="card__price">3.490.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🗄️</div>
+      <div class="card__body"><div class="card__tag">NAS · Studio &amp; Gia đình</div><h3 class="card__name" itemprop="name">Synology DS923+</h3><p class="card__desc" itemprop="description">4-Bay NAS · AMD Ryzen · Time Machine cho Mac · Mở rộng tới 108TB</p><div class="card__chips"><span class="chip">4-Bay</span><span class="chip">108TB max</span></div><div class="card__foot"><span class="card__price">18.500.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">💽</div>
+      <div class="card__body"><div class="card__tag">HDD · Backup dữ liệu</div><h3 class="card__name" itemprop="name">WD Elements Portable 4TB</h3><p class="card__desc" itemprop="description">USB 3.0 · Tương thích macOS · Backup Time Machine đơn giản</p><div class="card__chips"><span class="chip">4TB</span><span class="chip">USB 3.0</span></div><div class="card__foot"><span class="card__price">2.290.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">⚡</div>
+      <div class="card__body"><div class="card__tag">SSD NVMe · Nâng cấp Mac</div><h3 class="card__name" itemprop="name">Samsung 990 Pro 2TB</h3><p class="card__desc" itemprop="description">PCIe 4.0 NVMe · 7,450 MB/s đọc · Nâng cấp Mac Pro và Mac Studio</p><div class="card__chips"><span class="chip">PCIe 4.0</span><span class="chip">7450 MB/s</span></div><div class="card__foot"><span class="card__price">2.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ACCESSORIES -->
+<div class="sec-bg"><section id="accessories" class="sec">
+  <div class="sec__hdr"><div><h2 class="sec__title">Accessories</h2><p class="sec__sub">Phụ kiện Apple chính hãng — hoàn thiện hệ sinh thái của bạn</p></div><a class="sec__link" href="#contact">Hỏi tư vấn →</a></div>
+  <div class="grid">
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🎧</div>
+      <div class="card__body"><div class="card__tag">AirPods · Chống ồn ANC</div><h3 class="card__name" itemprop="name">AirPods Pro 2 (USB-C)</h3><p class="card__desc" itemprop="description">Chip H2 · ANC tốt nhất · Sạc MagSafe · IP54 · Âm thanh Spatial</p><div class="card__foot"><span class="card__price">6.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🖱️</div>
+      <div class="card__body"><div class="card__tag">Magic Mouse · Chính hãng</div><h3 class="card__name" itemprop="name">Apple Magic Mouse</h3><p class="card__desc" itemprop="description">Multi-Touch · Bluetooth · Thiết kế mỏng thanh lịch · Sạc USB-C</p><div class="card__foot"><span class="card__price">2.690.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">🔌</div>
+      <div class="card__body"><div class="card__tag">Hub · Thunderbolt 4</div><h3 class="card__name" itemprop="name">CalDigit TS4 Dock</h3><p class="card__desc" itemprop="description">18 cổng · Thunderbolt 4 · 98W sạc MacBook · 4K@144Hz</p><div class="card__foot"><span class="card__price">8.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+    <article class="card" itemscope itemtype="https://schema.org/Product">
+      <div class="card__img" aria-hidden="true">📺</div>
+      <div class="card__body"><div class="card__tag">Màn hình · 5K Pro</div><h3 class="card__name" itemprop="name">Apple Studio Display</h3><p class="card__desc" itemprop="description">27" · Retina 5K · Thunderbolt 3 · 96W sạc MacBook · Camera 12MP</p><div class="card__foot"><span class="card__price">55.990.000₫</span><a class="btn-buy" href="#contact">Liên hệ</a></div></div>
+    </article>
+  </div>
+</section></div>
+
+<!-- APPS -->
+<section id="apps" class="sec">
+  <div class="sec__hdr"><div><h2 class="sec__title">Apps hữu ích</h2><p class="sec__sub">Ứng dụng được khuyên dùng cho máy Mac mới của bạn</p></div></div>
+  <div class="apps">
+    <div class="app"><div class="app__icon" aria-hidden="true">🔒</div><div><div class="app__cat">Bảo mật</div><div class="app__name">Malwarebytes</div><div class="app__desc">Diệt malware, spyware trên macOS. Quét thời gian thực, nhẹ hệ thống.</div><a class="app__dl" href="https://www.malwarebytes.com/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">☁️</div><div><div class="app__cat">Sao lưu · Đồng bộ</div><div class="app__name">Google Drive</div><div class="app__desc">15GB miễn phí, đồng bộ tự động, chia sẻ với team dễ dàng.</div><a class="app__dl" href="https://www.google.com/drive/download/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">📦</div><div><div class="app__cat">Giải nén</div><div class="app__name">The Unarchiver</div><div class="app__desc">Mở mọi định dạng nén: RAR, ZIP, 7z, TAR. Miễn phí, không quảng cáo.</div><a class="app__dl" href="https://theunarchiver.com/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">🎬</div><div><div class="app__cat">Media Player</div><div class="app__name">VLC Media Player</div><div class="app__desc">Phát tất cả định dạng video/audio. Mã nguồn mở, không cần codec thêm.</div><a class="app__dl" href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">🔊</div><div><div class="app__cat">Âm thanh · Mac</div><div class="app__name">eqMac</div><div class="app__desc">Equalizer hệ thống macOS. Hữu ích đặc biệt với tai nghe và loa pro.</div><a class="app__dl" href="https://eqmac.app/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">🛠️</div><div><div class="app__cat">Tiện ích · Mac</div><div class="app__name">AppCleaner</div><div class="app__desc">Gỡ cài đặt app triệt để — xóa cả file ẩn. Nhỏ gọn, miễn phí.</div><a class="app__dl" href="https://freemacsoft.net/appcleaner/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">🔤</div><div><div class="app__cat">Gõ tiếng Việt</div><div class="app__name">OpenKey</div><div class="app__desc">Bộ gõ tiếng Việt tốt nhất trên macOS Sequoia. Nhẹ, ổn định.</div><a class="app__dl" href="https://github.com/tuyenvm/OpenKey" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
+    <div class="app"><div class="app__icon" aria-hidden="true">💻</div><div><div class="app__cat">Điều khiển từ xa</div><div class="app__name">AnyDesk</div><div class="app__desc">Điều khiển Mac từ xa tốc độ cao, độ trễ thấp. Hỗ trợ kỹ thuật từ bất cứ đâu.</div><a class="app__dl" href="https://anydesk.com/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<div class="contact-wrap">
+<section id="contact" class="sec">
+  <div class="sec__hdr"><div><h2 class="sec__title">Liên hệ</h2><p class="sec__sub">Tư vấn chọn máy, báo giá hoặc đặt hàng — phản hồi trong vòng 1 giờ</p></div></div>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+    <!-- Đăng ký tại web3forms.com và thay YOUR_KEY bằng access key của bạn -->
+    <input type="hidden" name="access_key" value="13e077e3-3c24-437f-a57d-15e389878e22">
+    <input type="hidden" name="subject" value="Liên hệ từ macxinhtot.com">
+    <input type="hidden" name="redirect" value="https://macxinhtot.com/?cam-on=1">
+    <input type="checkbox" name="botcheck" class="form__honey" tabindex="-1" aria-hidden="true">
+    <div class="form__row">
+      <div class="form__group">
+        <label class="form__label" for="f-name">Họ và tên *</label>
+        <input class="form__input" type="text" id="f-name" name="name" required placeholder="Nguyễn Văn A" autocomplete="name">
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="f-phone">Số điện thoại *</label>
+        <input class="form__input" type="tel" id="f-phone" name="phone" required placeholder="090x xxx xxx" autocomplete="tel">
+      </div>
     </div>
-  </div>
-</div>
-
-<div id="harddrive" class="section">
-  <div class="section-hdr"><div><h2 class="section-title">Hard Drive &amp; Storage</h2><p class="section-sub">Lưu trữ tốc độ cao, an toàn — hoàn hảo với hệ sinh thái Apple</p></div><button class="see-all">Xem tất cả →</button></div>
-  <div class="tab-bar"><button class="tab active">Tất cả</button><button class="tab">SSD Di động</button><button class="tab">NAS</button><button class="tab">HDD External</button></div>
-  <div class="product-grid">
-    <div class="card"><div class="card-img">💾</div><div class="card-body"><div class="card-tag">SSD Di động · Nhanh nhất</div><div class="card-name">Samsung T9 2TB</div><div class="card-desc">USB 3.2 Gen 2×2 · 2,000 MB/s · Chống va đập · IP65 · Kết nối iPhone 15 Pro</div><div class="card-chips"><span class="chip">2TB</span><span class="chip">2000 MB/s</span><span class="chip">IP65</span></div><div class="card-foot"><div class="price">3.490.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-    <div class="card"><div class="card-img">🗄️</div><div class="card-body"><div class="card-tag">NAS · Studio &amp; Gia đình</div><div class="card-name">Synology DS923+</div><div class="card-desc">4-Bay NAS · AMD Ryzen · Time Machine cho Mac · Mở rộng tới 108TB</div><div class="card-chips"><span class="chip">4-Bay</span><span class="chip">108TB max</span></div><div class="card-foot"><div class="price">18.500.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-    <div class="card"><div class="card-img">💽</div><div class="card-body"><div class="card-tag">HDD · Backup dữ liệu</div><div class="card-name">WD Elements Portable 4TB</div><div class="card-desc">USB 3.0 · Tương thích macOS · Backup Time Machine đơn giản và nhanh chóng</div><div class="card-chips"><span class="chip">4TB</span><span class="chip">USB 3.0</span></div><div class="card-foot"><div class="price">2.290.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-    <div class="card"><div class="card-img">⚡</div><div class="card-body"><div class="card-tag">SSD NVMe · Nâng cấp Mac</div><div class="card-name">Samsung 990 Pro 2TB</div><div class="card-desc">PCIe 4.0 NVMe · 7,450 MB/s đọc · Nâng cấp storage cho Mac Pro và Mac Studio</div><div class="card-chips"><span class="chip">PCIe 4.0</span><span class="chip">7450 MB/s</span></div><div class="card-foot"><div class="price">2.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-  </div>
-</div>
-
-<div id="accessories" class="bg-gray">
-  <div class="section-wrap">
-    <div class="section-hdr"><div><h2 class="section-title">Accessories</h2><p class="section-sub">Phụ kiện Apple chính hãng — hoàn thiện hệ sinh thái của bạn</p></div><button class="see-all">Xem tất cả →</button></div>
-    <div class="product-grid">
-      <div class="card"><div class="card-img">🎧</div><div class="card-body"><div class="card-tag">AirPods · Chống ồn chủ động</div><div class="card-name">AirPods Pro 2 (USB-C)</div><div class="card-desc">Chip H2 · ANC tốt nhất · Sạc MagSafe · IP54 · Âm thanh Spatial</div><div class="card-foot"><div class="price">6.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-      <div class="card"><div class="card-img">🖱️</div><div class="card-body"><div class="card-tag">Magic Mouse · Chính hãng</div><div class="card-name">Apple Magic Mouse</div><div class="card-desc">Multi-Touch · Bluetooth · Thiết kế mỏng thanh lịch · Sạc USB-C</div><div class="card-foot"><div class="price">2.690.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-      <div class="card"><div class="card-img">🔌</div><div class="card-body"><div class="card-tag">Hub · Thunderbolt 4</div><div class="card-name">CalDigit TS4 Dock</div><div class="card-desc">18 cổng · Thunderbolt 4 · 98W sạc MacBook · 4K@144Hz · Lý tưởng cho Mac mini</div><div class="card-foot"><div class="price">8.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
-      <div class="card"><div class="card-img">📺</div><div class="card-body"><div class="card-tag">Màn hình · 5K Pro</div><div class="card-name">Apple Studio Display</div><div class="card-desc">27" · Retina 5K · Thunderbolt 3 · 96W sạc MacBook · Camera 12MP Center Stage</div><div class="card-foot"><div class="price">55.990.000₫</div><button class="btn-buy">Mua ngay</button></div></div></div>
+    <div class="form__group">
+      <label class="form__label" for="f-email">Email</label>
+      <input class="form__input" type="email" id="f-email" name="email" placeholder="email@example.com" autocomplete="email">
     </div>
-  </div>
-</div>
-
-<div id="apps" class="section">
-  <div class="section-hdr"><div><h2 class="section-title">Apps hữu ích</h2><p class="section-sub">Những ứng dụng được khuyên dùng dành cho máy mới của bạn</p></div></div>
-  <div class="apps-grid">
-    <div class="app-card"><div class="app-icon">🔒</div><div class="app-info"><div class="app-cat">Bảo mật</div><div class="app-name">Malwarebytes</div><div class="app-desc">Diệt malware, spyware trên macOS. Quét thời gian thực, giao diện đơn giản.</div><a class="app-btn" href="https://www.malwarebytes.com/" target="_blank">⬇ Tải về <span class="app-os">macOS · Win</span></a></div></div>
-    <div class="app-card"><div class="app-icon">☁️</div><div class="app-info"><div class="app-cat">Sao lưu · Đồng bộ</div><div class="app-name">Google Drive</div><div class="app-desc">15GB miễn phí, đồng bộ file tự động, chia sẻ với team dễ dàng.</div><a class="app-btn" href="https://www.google.com/drive/download/" target="_blank">⬇ Tải về <span class="app-os">macOS · Win</span></a></div></div>
-    <div class="app-card"><div class="app-icon">📦</div><div class="app-info"><div class="app-cat">Giải nén</div><div class="app-name">The Unarchiver</div><div class="app-desc">Mở mọi định dạng nén: RAR, ZIP, 7z, TAR. Miễn phí, không quảng cáo.</div><a class="app-btn" href="https://theunarchiver.com/" target="_blank">⬇ Tải về <span class="app-os">macOS</span></a></div></div>
-    <div class="app-card"><div class="app-icon">🎬</div><div class="app-info"><div class="app-cat">Media Player</div><div class="app-name">VLC Media Player</div><div class="app-desc">Phát tất cả định dạng video/audio. Không cần codec thêm. Mã nguồn mở.</div><a class="app-btn" href="https://www.videolan.org/vlc/" target="_blank">⬇ Tải về <span class="app-os">macOS · Win</span></a></div></div>
-    <div class="app-card"><div class="app-icon">🔊</div><div class="app-info"><div class="app-cat">Âm thanh · Mac</div><div class="app-name">eqMac</div><div class="app-desc">Equalizer hệ thống cho macOS. Điều chỉnh âm thanh toàn máy, hữu ích với tai nghe pro.</div><a class="app-btn" href="https://eqmac.app/" target="_blank">⬇ Tải về <span class="app-os">macOS</span></a></div></div>
-    <div class="app-card"><div class="app-icon">🛠️</div><div class="app-info"><div class="app-cat">Tiện ích · Mac</div><div class="app-name">AppCleaner</div><div class="app-desc">Gỡ cài đặt app triệt để trên Mac — xóa cả file ẩn. Nhỏ gọn, miễn phí.</div><a class="app-btn" href="https://freemacsoft.net/appcleaner/" target="_blank">⬇ Tải về <span class="app-os">macOS</span></a></div></div>
-    <div class="app-card"><div class="app-icon">🔤</div><div class="app-info"><div class="app-cat">Gõ tiếng Việt</div><div class="app-name">OpenKey</div><div class="app-desc">Bộ gõ tiếng Việt hoạt động tốt nhất trên macOS Sequoia. Nhẹ, ổn định.</div><a class="app-btn" href="https://github.com/tuyenvm/OpenKey" target="_blank">⬇ Tải về <span class="app-os">macOS · Win</span></a></div></div>
-    <div class="app-card"><div class="app-icon">💻</div><div class="app-info"><div class="app-cat">Điều khiển từ xa</div><div class="app-name">AnyDesk</div><div class="app-desc">Điều khiển Mac từ xa tốc độ cao, độ trễ thấp. Hỗ trợ kỹ thuật từ bất cứ đâu.</div><a class="app-btn" href="https://anydesk.com/" target="_blank">⬇ Tải về <span class="app-os">macOS · Win</span></a></div></div>
-  </div>
-</div>
-
-<footer>
-  <div class="foot-inner">
-    <div class="foot-cols">
-      <div class="foot-col"><h4>Sản phẩm</h4><a href="#laptops">MacBook</a><a href="#desktops">Mac mini / iMac</a><a href="#desktops">Mac Studio / Mac Pro</a><a href="#harddrive">Hard Drive</a><a href="#accessories">Accessories</a></div>
-      <div class="foot-col"><h4>Mua sắm</h4><a href="#">Tư vấn chọn máy</a><a href="#">Đặt hàng online</a><a href="#">Giao hàng TP.HCM</a><a href="#">Bảo hành chính hãng</a></div>
-      <div class="foot-col"><h4>Hỗ trợ</h4><a href="#">Cài đặt &amp; Setup</a><a href="#">Hướng dẫn sử dụng</a><a href="#apps">Apps hữu ích</a><a href="#">Liên hệ</a></div>
-      <div class="foot-col"><h4>Về chúng tôi</h4><a href="#">Giới thiệu Mắc Xinh Tốt</a><a href="#">Showroom TP.HCM</a><a href="#">Zalo: 090x xxx xxx</a><a href="#">Chính sách bảo mật</a></div>
+    <div class="form__group">
+      <label class="form__label" for="f-product">Sản phẩm quan tâm</label>
+      <select class="form__select" id="f-product" name="product">
+        <option value="">— Chọn danh mục —</option>
+        <option>MacBook Air</option>
+        <option>MacBook Pro</option>
+        <option>Mac mini</option>
+        <option>iMac</option>
+        <option>Mac Studio</option>
+        <option>Mac Pro</option>
+        <option>Hard Drive / Storage</option>
+        <option>Accessories</option>
+        <option>Khác</option>
+      </select>
     </div>
-    <div class="foot-bottom">
-      <div class="foot-copy">© 2025 Mắc Xinh Tốt · TP. Hồ Chí Minh · Chuyên Apple chính hãng</div>
-      <div class="foot-links"><a href="#">Bảo mật</a><a href="#">Điều khoản</a></div>
+    <div class="form__group">
+      <label class="form__label" for="f-msg">Lời nhắn</label>
+      <textarea class="form__textarea" id="f-msg" name="message" placeholder="Mô tả nhu cầu của bạn..."></textarea>
+    </div>
+    <button class="form__submit" type="submit">Gửi yêu cầu →</button>
+    <p class="form__note">Thông tin của bạn được bảo mật và chỉ dùng để liên hệ tư vấn.</p>
+  </form>
+</section>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__cols">
+      <div class="footer__col"><h4>Sản phẩm</h4><a href="#laptops">MacBook</a><a href="#desktops">Mac mini / iMac</a><a href="#desktops">Mac Studio / Mac Pro</a><a href="#harddrive">Hard Drive</a><a href="#accessories">Accessories</a></div>
+      <div class="footer__col"><h4>Mua sắm</h4><a href="#contact">Tư vấn chọn máy</a><a href="#contact">Đặt hàng online</a><a href="#contact">Giao hàng TP.HCM</a><a href="#contact">Bảo hành chính hãng</a></div>
+      <div class="footer__col"><h4>Hỗ trợ</h4><a href="#contact">Cài đặt &amp; Setup</a><a href="#apps">Apps hữu ích</a><a href="#contact">Hướng dẫn sử dụng</a><a href="#contact">Liên hệ</a></div>
+      <div class="footer__col"><h4>Mắc Xinh Tốt</h4><a href="#contact">Showroom TP.HCM</a><a href="#contact">Zalo: 090x xxx xxx</a><a href="#contact">Chính sách bảo mật</a><a href="#contact">Điều khoản sử dụng</a></div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2025 Mắc Xinh Tốt · TP. Hồ Chí Minh · Chuyên gia Mac của bạn</span>
+      <div class="footer__links"><a href="#contact">Bảo mật</a><a href="#contact">Điều khoản</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',function(){
-    this.closest('.tab-bar').querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    this.classList.add('active');
+/* Tab switching */
+document.querySelectorAll('.tabs').forEach(function(bar){
+  bar.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      bar.querySelectorAll('.tab').forEach(function(x){x.classList.remove('is-active')});
+      t.classList.add('is-active');
+    });
   });
 });
-document.querySelectorAll('.btn-buy').forEach(b=>{
-  b.addEventListener('click',()=>alert('Liên hệ Zalo để đặt hàng! 🛒'));
-});
-document.querySelectorAll('nav .nav-links a').forEach(a=>{
-  a.addEventListener('click',function(){
-    document.querySelectorAll('nav .nav-links a').forEach(x=>x.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
+/* Active nav on scroll */
+var secs=document.querySelectorAll('section[id]');
+var navAs=document.querySelectorAll('.nav__links a');
+window.addEventListener('scroll',function(){
+  var cur='';
+  secs.forEach(function(s){if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  navAs.forEach(function(a){a.classList.toggle('is-active',a.getAttribute('href')==='#'+cur)});
+},{passive:true});
+/* Form validation */
+var form=document.querySelector('.form');
+if(form){form.addEventListener('submit',function(e){
+  var n=form.querySelector('#f-name'),p=form.querySelector('#f-phone');
+  if(!n.value.trim()||!p.value.trim()){e.preventDefault();alert('Vui lòng điền họ tên và số điện thoại.');}
+});}
 </script>
 </body>
 </html>

@@ -132,9 +132,7 @@ content:
           - name: url
             label: Link tải / App Store / Mua
             type: string
-            pattern:
-              regex: "^https?://"
-              message: "URL phải bắt đầu bằng http:// hoặc https://"
+            description:留空 cho ứng dụng chưa phát hành (Coming Soon).
           - name: osNote
             label: Ghi chú nền tảng
             type: string

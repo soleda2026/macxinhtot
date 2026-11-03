@@ -121,6 +121,16 @@ button{font-family:inherit;cursor:pointer}
 .app__shots img{width:56px;height:36px;object-fit:cover;border-radius:6px;border:.5px solid var(--c-border)}
 .app__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:8px;margin-top:auto}
 .app__price{font-size:11px;font-weight:600;min-width:0;line-height:1.2}
+.app__coming-soon{
+  display:inline-block;
+  background:var(--c-bg2);
+  color:var(--c-muted);
+  font-size:10px;
+  font-weight:500;
+  border-radius:4px;
+  padding:2px 8px;
+  margin-left:4px;
+}
 .apps__empty{grid-column:1/-1;font-size:12px;color:var(--c-muted);padding:8px 0}
 
 /* ===== FORM ===== */
@@ -390,7 +400,9 @@ function makeAppCard(item) {
     + '<div class="app__platform">'+esc(osLabel)+'</div>'
     + '<div class="app__foot">'
     + '<span class="app__price">'+esc(price)+'</span>'
-    + (item.url ? '<a class="app__dl" href="'+esc(safeUrl(item.url))+'" target="_blank" rel="noopener" aria-label="Tải về '+esc(item.name)+' ('+esc(osLabel)+')">⬇ Tải về</a>' : '')
+    + (item.url
+      ? '<a class="app__dl" href="'+esc(safeUrl(item.url))+'" target="_blank" rel="noopener" aria-label="Tải về '+esc(item.name)+' ('+esc(osLabel)+')">⬇ Tải về</a>'
+      : '<span class="app__coming-soon">Coming Soon</span>')
     + '</div></div></article>';
 }
 

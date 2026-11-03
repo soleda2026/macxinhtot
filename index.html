@@ -64,7 +64,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* ===== CATS ===== */
 .cats{background:var(--c-bg2);border-top:.5px solid var(--c-border);border-bottom:.5px solid var(--c-border)}
-.cats__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.cats__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 .cats__item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 16px;gap:7px;border-right:.5px solid var(--c-border);text-decoration:none;color:var(--c-text);transition:background .15s}
 .cats__item:last-child{border-right:none}
 .cats__item:hover{background:#eaeaec}
@@ -113,6 +113,14 @@ button{font-family:inherit;cursor:pointer}
 .app__dl{display:inline-flex;align-items:center;gap:4px;background:none;border:.8px solid var(--c-border);border-radius:var(--r-pill);padding:4px 12px;font-size:11px;color:var(--c-blue);font-family:inherit;text-decoration:none;transition:all .15s}
 .app__dl:hover{background:rgba(0,113,227,.07);border-color:var(--c-blue)}
 .app__os{font-size:10px;color:var(--c-muted);margin-left:3px}
+.app__body{flex:1;min-width:0}
+.app__icon img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.app__ver{font-size:10px;color:var(--c-muted);margin-bottom:4px}
+.app__shots{display:flex;gap:4px;margin-bottom:8px}
+.app__shots img{width:56px;height:36px;object-fit:cover;border-radius:6px;border:.5px solid var(--c-border)}
+.app__foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.app__price{font-size:11px;font-weight:600}
+.apps__empty{grid-column:1/-1;font-size:12px;color:var(--c-muted);padding:8px 0}
 
 /* ===== FORM ===== */
 .contact-wrap{background:var(--c-white);border-top:.5px solid var(--c-border)}
@@ -144,8 +152,7 @@ button{font-family:inherit;cursor:pointer}
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   .cats__inner{grid-template-columns:repeat(2,1fr)}
-  .cats__item:nth-child(2){border-right:none}
-  .cats__item:nth-child(3){border-right:.5px solid var(--c-border)}
+  .cats__item:nth-child(2n){border-right:none}
   .footer__cols{grid-template-columns:repeat(2,1fr)}
   .form__row{grid-template-columns:1fr}
   .nav__links a{font-size:12px;padding:0 7px}
@@ -168,7 +175,7 @@ button{font-family:inherit;cursor:pointer}
       <a href="#desktops">Desktops</a>
       <a href="#harddrive">Hard Drive</a>
       <a href="#accessories">Accessories</a>
-      <a href="#apps">Apps hữu ích</a>
+      <a href="#apps">Softwares</a>
       <a href="#contact">Liên hệ</a>
     </div>
     <div class="nav__actions">
@@ -202,6 +209,7 @@ button{font-family:inherit;cursor:pointer}
     <a class="cats__item" href="#desktops"><div class="cats__icon" aria-hidden="true">🖥️</div><div class="cats__label">Desktops</div><div class="cats__desc">Mac mini, iMac, Mac Studio</div></a>
     <a class="cats__item" href="#harddrive"><div class="cats__icon" aria-hidden="true">💾</div><div class="cats__label">Hard Drive</div><div class="cats__desc">SSD, HDD, NAS, External</div></a>
     <a class="cats__item" href="#accessories"><div class="cats__icon" aria-hidden="true">🎧</div><div class="cats__label">Accessories</div><div class="cats__desc">AirPods, Magic, Hub, Display</div></a>
+    <a class="cats__item" href="#apps"><div class="cats__icon" aria-hidden="true">🧩</div><div class="cats__label">Softwares</div><div class="cats__desc">macOS, iOS, Apps hữu ích</div></a>
   </div>
 </nav>
 
@@ -232,19 +240,15 @@ button{font-family:inherit;cursor:pointer}
   <div class="grid" id="grid-accessories"></div>
 </section></div>
 
-<!-- APPS -->
+<!-- SOFTWARES -->
 <section id="apps" class="sec">
-  <div class="sec__hdr"><div><h2 class="sec__title">Apps hữu ích</h2><p class="sec__sub">Ứng dụng được khuyên dùng cho máy Mac mới của bạn</p></div></div>
-  <div class="apps">
-    <div class="app"><div class="app__icon" aria-hidden="true">🔒</div><div><div class="app__cat">Bảo mật</div><div class="app__name">Malwarebytes</div><div class="app__desc">Diệt malware, spyware trên macOS. Quét thời gian thực, nhẹ hệ thống.</div><a class="app__dl" href="https://www.malwarebytes.com/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">☁️</div><div><div class="app__cat">Sao lưu · Đồng bộ</div><div class="app__name">Google Drive</div><div class="app__desc">15GB miễn phí, đồng bộ tự động, chia sẻ với team dễ dàng.</div><a class="app__dl" href="https://www.google.com/drive/download/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">📦</div><div><div class="app__cat">Giải nén</div><div class="app__name">The Unarchiver</div><div class="app__desc">Mở mọi định dạng nén: RAR, ZIP, 7z, TAR. Miễn phí, không quảng cáo.</div><a class="app__dl" href="https://theunarchiver.com/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">🎬</div><div><div class="app__cat">Media Player</div><div class="app__name">VLC Media Player</div><div class="app__desc">Phát tất cả định dạng video/audio. Mã nguồn mở, không cần codec thêm.</div><a class="app__dl" href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">🔊</div><div><div class="app__cat">Âm thanh · Mac</div><div class="app__name">eqMac</div><div class="app__desc">Equalizer hệ thống macOS. Hữu ích đặc biệt với tai nghe và loa pro.</div><a class="app__dl" href="https://eqmac.app/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">🛠️</div><div><div class="app__cat">Tiện ích · Mac</div><div class="app__name">AppCleaner</div><div class="app__desc">Gỡ cài đặt app triệt để — xóa cả file ẩn. Nhỏ gọn, miễn phí.</div><a class="app__dl" href="https://freemacsoft.net/appcleaner/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">🔤</div><div><div class="app__cat">Gõ tiếng Việt</div><div class="app__name">OpenKey</div><div class="app__desc">Bộ gõ tiếng Việt tốt nhất trên macOS Sequoia. Nhẹ, ổn định.</div><a class="app__dl" href="https://github.com/tuyenvm/OpenKey" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
-    <div class="app"><div class="app__icon" aria-hidden="true">💻</div><div><div class="app__cat">Điều khiển từ xa</div><div class="app__name">AnyDesk</div><div class="app__desc">Điều khiển Mac từ xa tốc độ cao, độ trễ thấp. Hỗ trợ kỹ thuật từ bất cứ đâu.</div><a class="app__dl" href="https://anydesk.com/" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">macOS · Win</span></a></div></div>
+  <div class="sec__hdr"><div><h2 class="sec__title">Softwares</h2><p class="sec__sub">Ứng dụng macOS &amp; iOS — bao gồm Apps hữu ích cho máy Mac mới</p></div></div>
+  <div class="tabs" role="tablist" aria-label="Lọc softwares theo nền tảng">
+    <button class="tab is-active" role="tab" aria-selected="true" data-platform="all">Tất cả</button>
+    <button class="tab" role="tab" aria-selected="false" data-platform="macos">macOS</button>
+    <button class="tab" role="tab" aria-selected="false" data-platform="ios">iOS</button>
   </div>
+  <div class="apps" id="apps-grid"></div>
 </section>
 
 <!-- CONTACT FORM -->
@@ -283,6 +287,7 @@ button{font-family:inherit;cursor:pointer}
         <option>Mac Pro</option>
         <option>Hard Drive / Storage</option>
         <option>Accessories</option>
+        <option>Softwares (macOS / iOS)</option>
         <option>Khác</option>
       </select>
     </div>
@@ -323,25 +328,62 @@ var ICONS = {
   accessories: ['🎧','🖱️','🔌','📺']
 };
 
+/* ── Escape dữ liệu từ CMS trước khi chèn vào HTML ── */
+function esc(v){
+  return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function safeUrl(v){ return /^https?:\/\//i.test(v || '') ? v : '#'; }
+
 /* ── Render một card sản phẩm ── */
 function makeCard(item, fallbackIcon) {
   var chips = (item.chips || []).map(function(c){
-    return '<span class="chip">'+c+'</span>';
+    return '<span class="chip">'+esc(c)+'</span>';
   }).join('');
   /* Nếu có trường image thì dùng ảnh, không thì dùng emoji */
   var imgHtml = item.image
-    ? '<div class="card__img"><img src="'+item.image+'" alt="'+item.name+'" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:12px"></div>'
-    : '<div class="card__img" aria-hidden="true">'+fallbackIcon+'</div>';
+    ? '<div class="card__img"><img src="'+esc(item.image)+'" alt="'+esc(item.name)+'" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:12px"></div>'
+    : '<div class="card__img" aria-hidden="true">'+esc(fallbackIcon)+'</div>';
   return '<article class="card" itemscope itemtype="https://schema.org/Product">'
     + imgHtml
     + '<div class="card__body">'
-    + '<div class="card__tag">'+item.tag+'</div>'
-    + '<h3 class="card__name" itemprop="name">'+item.name+'</h3>'
-    + '<p class="card__desc" itemprop="description">'+item.desc+'</p>'
+    + '<div class="card__tag">'+esc(item.tag)+'</div>'
+    + '<h3 class="card__name" itemprop="name">'+esc(item.name)+'</h3>'
+    + '<p class="card__desc" itemprop="description">'+esc(item.desc)+'</p>'
     + (chips ? '<div class="card__chips">'+chips+'</div>' : '')
     + '<div class="card__foot">'
-    + '<span class="card__price">'+item.price+'</span>'
+    + '<span class="card__price">'+esc(item.price)+'</span>'
     + '<a class="btn-buy" href="#contact">Liên hệ</a>'
+    + '</div></div></article>';
+}
+
+/* ── Render một card software (macOS / iOS) ── */
+function makeAppCard(item) {
+  var isIos = item.platform === 'ios';
+  var icon = item.image
+    ? '<div class="app__icon"><img src="'+esc(item.image)+'" alt="" loading="lazy"></div>'
+    : '<div class="app__icon" aria-hidden="true">'+esc(item.icon || (isIos ? '📱' : '🧩'))+'</div>';
+  var version = item.version ? (/^v/i.test(item.version) ? item.version : 'v'+item.version) : '';
+  var price = item.price || (item.free ? 'Miễn phí' : 'Trả phí');
+  var osLabel = item.osNote || (isIos ? 'iOS' : 'macOS');
+  var shots = (item.screenshots || []).filter(Boolean).slice(0, 3);
+  var shotsHtml = shots.length
+    ? '<div class="app__shots">'+shots.map(function(src){
+        return '<img src="'+esc(src)+'" alt="Ảnh chụp '+esc(item.name)+'" loading="lazy">';
+      }).join('')+'</div>'
+    : '';
+  return '<article class="app" data-platform="'+esc(item.platform)+'">'
+    + icon
+    + '<div class="app__body">'
+    + '<div class="app__cat">'+esc(item.category || (isIos ? 'iOS' : 'macOS'))+'</div>'
+    + '<div class="app__name">'+esc(item.name)+'</div>'
+    + (version ? '<div class="app__ver">Phiên bản '+esc(version)+'</div>' : '')
+    + '<div class="app__desc">'+esc(item.desc)+'</div>'
+    + shotsHtml
+    + '<div class="app__foot">'
+    + '<span class="app__price">'+esc(price)+'</span>'
+    + (item.url ? '<a class="app__dl" href="'+esc(safeUrl(item.url))+'" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">'+esc(osLabel)+'</span></a>' : '')
     + '</div></div></article>';
 }
 
@@ -359,6 +401,45 @@ fetch('products.json')
     });
   })
   .catch(function(){ /* fallback: không báo lỗi nếu chạy local */ });
+
+/* ── Load softwares.json, render và lọc theo nền tảng ── */
+var softwareList = [];
+var currentPlatform = 'all';
+
+function renderSoftwares(platform) {
+  var grid = document.getElementById('apps-grid');
+  if (!grid) return;
+  var list = softwareList.filter(function(item){
+    return platform === 'all' || item.platform === platform;
+  });
+  grid.innerHTML = list.length
+    ? list.map(makeAppCard).join('')
+    : '<p class="apps__empty">Chưa có ứng dụng trong mục này.</p>';
+}
+
+fetch('softwares.json')
+  .then(function(r){ return r.json(); })
+  .then(function(data) {
+    softwareList = data.softwares || [];
+    renderSoftwares(currentPlatform);
+  })
+  .catch(function(){
+    var grid = document.getElementById('apps-grid');
+    if (grid) grid.innerHTML = '<p class="apps__empty">Không tải được danh sách softwares.</p>';
+  });
+
+var appTabs = document.querySelectorAll('#apps .tab');
+appTabs.forEach(function(btn){
+  btn.addEventListener('click', function(){
+    currentPlatform = btn.getAttribute('data-platform');
+    appTabs.forEach(function(b){
+      var active = b === btn;
+      b.classList.toggle('is-active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    renderSoftwares(currentPlatform);
+  });
+});
 
 /* ── Active nav on scroll ── */
 var secs = document.querySelectorAll('section[id]');

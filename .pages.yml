@@ -1,0 +1,141 @@
+media:
+  input: assets/uploads
+  output: assets/uploads
+  rename: safe
+  categories: [image]
+
+content:
+  - name: catalog
+    label: Sản phẩm (13)
+    type: file
+    path: products.json
+    format: json
+    fields:
+      - name: laptops
+        label: Laptops
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields: &product_fields
+          - name: tag
+            label: Nhãn
+            type: string
+          - name: name
+            label: Tên sản phẩm
+            type: string
+            required: true
+          - name: image
+            label: Ảnh sản phẩm
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+          - name: desc
+            label: Mô tả
+            type: text
+          - name: chips
+            label: Chips / thông số
+            type: string
+            list: true
+          - name: price
+            label: Giá
+            type: string
+      - name: desktops
+        label: Desktops
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields: *product_fields
+      - name: harddrives
+        label: Hard Drive
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields: *product_fields
+      - name: accessories
+        label: Accessories
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields: *product_fields
+
+  - name: softwares
+    label: Softwares (macOS & iOS)
+    type: file
+    path: softwares.json
+    format: json
+    fields:
+      - name: softwares
+        label: Danh sách softwares
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} ({fields.platform})"
+        fields:
+          - name: name
+            label: Tên ứng dụng
+            type: string
+            required: true
+          - name: icon
+            label: Icon (emoji)
+            type: string
+            description: Dùng emoji khi chưa có ảnh icon, ví dụ 🔒 hoặc 🧩.
+          - name: image
+            label: Ảnh icon (tuỳ chọn)
+            type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, avif]
+          - name: version
+            label: Phiên bản
+            type: string
+          - name: platform
+            label: Nền tảng
+            type: select
+            required: true
+            options:
+              values:
+                - name: macos
+                  label: macOS
+                - name: ios
+                  label: iOS
+          - name: category
+            label: Danh mục
+            type: string
+            description: Ví dụ Bảo mật, Đồng bộ, Tiện ích.
+          - name: desc
+            label: Mô tả
+            type: text
+            required: true
+          - name: screenshots
+            label: Ảnh chụp màn hình
+            type: image
+            options:
+              multiple:
+                max: 6
+              unique: true
+              extensions: [jpg, jpeg, png, webp, avif]
+          - name: free
+            label: Miễn phí
+            type: boolean
+          - name: price
+            label: Giá / trạng thái
+            type: string
+            description: Ví dụ "Miễn phí", "Miễn phí 15GB", "199.000₫".
+          - name: url
+            label: Link tải / App Store / Mua
+            type: string
+            pattern:
+              regex: "^https?://"
+              message: "URL phải bắt đầu bằng http:// hoặc https://"
+          - name: osNote
+            label: Ghi chú nền tảng
+            type: string
+            description: Hiển thị cạnh nút tải, ví dụ "macOS · Win". Để trống sẽ dùng macOS/iOS.

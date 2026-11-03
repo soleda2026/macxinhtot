@@ -110,16 +110,17 @@ button{font-family:inherit;cursor:pointer}
 .app__cat{font-size:10px;color:var(--c-blue);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
 .app__name{font-size:14px;font-weight:600;margin-bottom:2px}
 .app__desc{font-size:11px;color:var(--c-muted);margin-bottom:8px;line-height:1.4}
-.app__dl{display:inline-flex;align-items:center;gap:4px;background:none;border:.8px solid var(--c-border);border-radius:var(--r-pill);padding:4px 12px;font-size:11px;color:var(--c-blue);font-family:inherit;text-decoration:none;transition:all .15s}
+.app__dl{display:inline-flex;align-items:center;gap:4px;background:none;border:.8px solid var(--c-border);border-radius:var(--r-pill);padding:4px 12px;font-size:11px;color:var(--c-blue);font-family:inherit;text-decoration:none;transition:all .15s;white-space:nowrap;flex-shrink:0;justify-content:center}
 .app__dl:hover{background:rgba(0,113,227,.07);border-color:var(--c-blue)}
-.app__os{font-size:10px;color:var(--c-muted);margin-left:3px}
-.app__body{flex:1;min-width:0}
+.app__dl:focus-visible,.tab:focus-visible{outline:2px solid var(--c-blue);outline-offset:2px}
+.app__platform{display:inline-flex;align-self:flex-start;font-size:10px;color:var(--c-muted);background:var(--c-bg2);border-radius:4px;padding:2px 7px;margin-bottom:8px}
+.app__body{flex:1;min-width:0;align-self:stretch;display:flex;flex-direction:column}
 .app__icon img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .app__ver{font-size:10px;color:var(--c-muted);margin-bottom:4px}
 .app__shots{display:flex;gap:4px;margin-bottom:8px}
 .app__shots img{width:56px;height:36px;object-fit:cover;border-radius:6px;border:.5px solid var(--c-border)}
-.app__foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.app__price{font-size:11px;font-weight:600}
+.app__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:8px;margin-top:auto}
+.app__price{font-size:11px;font-weight:600;min-width:0;line-height:1.2}
 .apps__empty{grid-column:1/-1;font-size:12px;color:var(--c-muted);padding:8px 0}
 
 /* ===== FORM ===== */
@@ -161,6 +162,11 @@ button{font-family:inherit;cursor:pointer}
 @media(max-width:480px){
   .hero{padding:48px 16px 40px}
   .nav__links a{font-size:11px;padding:0 5px}
+}
+@media(max-width:390px){
+  .nav__links{flex-wrap:wrap}
+  .nav__links a{font-size:10px;padding:0 4px}
+  .nav__actions{margin-left:0;order:99}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -381,9 +387,10 @@ function makeAppCard(item) {
     + (version ? '<div class="app__ver">Phiên bản '+esc(version)+'</div>' : '')
     + '<div class="app__desc">'+esc(item.desc)+'</div>'
     + shotsHtml
+    + '<div class="app__platform">'+esc(osLabel)+'</div>'
     + '<div class="app__foot">'
     + '<span class="app__price">'+esc(price)+'</span>'
-    + (item.url ? '<a class="app__dl" href="'+esc(safeUrl(item.url))+'" target="_blank" rel="noopener">⬇ Tải về <span class="app__os">'+esc(osLabel)+'</span></a>' : '')
+    + (item.url ? '<a class="app__dl" href="'+esc(safeUrl(item.url))+'" target="_blank" rel="noopener" aria-label="Tải về '+esc(item.name)+' ('+esc(osLabel)+')">⬇ Tải về</a>' : '')
     + '</div></div></article>';
 }
 

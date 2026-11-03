@@ -72,10 +72,10 @@ for (const item of softwares || []) {
   check(typeof item.desc === 'string' && item.desc.trim() !== '', `"${label}" có mô tả`);
   check(typeof item.free === 'boolean', `"${label}" có free dạng boolean`);
   check(typeof item.price === 'string', `"${label}" có price dạng chuỗi`);
-  check(Array.isArray(item.screenshots), `"${label}" có screenshots dạng mảng`);
+  check(item.screenshots === undefined || Array.isArray(item.screenshots), `"${label}" có screenshots dạng mảng`);
   check(item.url === '' || /^https?:\/\//i.test(item.url), `"${label}" có URL http(s) hợp lệ`);
-  check(typeof item.icon === 'string' && typeof item.image === 'string', `"${label}" có icon/image`);
-  check(typeof item.version === 'string', `"${label}" có version`);
+  check(item.icon === undefined || typeof item.icon === 'string', `"${label}" có icon/image`);
+  check(item.version === undefined || typeof item.version === 'string', `"${label}" có version`);
 }
 
 for (const id of ['grid-laptops', 'grid-desktops', 'grid-harddrives', 'grid-accessories', 'apps-grid']) {

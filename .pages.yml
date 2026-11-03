@@ -131,7 +131,7 @@ content:
             description: Ví dụ "Miễn phí", "Miễn phí 15GB", "199.000₫".
           - name: url
             label: Link tải / App Store / Mua
-            type: string
+            type: text
             description:留空 cho ứng dụng chưa phát hành (Coming Soon).
           - name: osNote
             label: Ghi chú nền tảng

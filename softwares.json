@@ -87,6 +87,16 @@
       "price": "Miễn phí cho cá nhân",
       "url": "https://anydesk.com/",
       "osNote": "macOS · Win"
+    },
+    {
+      "name": "SVD",
+      "icon": "🎬",
+      "platform": "macos",
+      "category": "Browser Extension · Video Tools",
+      "desc": "Smart Video Downloader (SVD) is a Chrome browser extension designed to help users detect and download supported online videos for authorized offline viewing. Coming Soon.",
+      "free": true,
+      "price": "Coming Soon",
+      "url": ""
     }
   ]
 }

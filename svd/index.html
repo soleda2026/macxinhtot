@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVD — Smart Video Downloader</title>
+  <link rel="canonical" href="https://macxinhtot.com/svd/">
+  <style>
+    :root {
+      --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
+      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;
+      --c-green:#34c759;--c-border:#d2d2d7;
+      --r-card:18px;--r-pill:980px;
+      --sh-card:0 2px 12px rgba(0,0,0,.08);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--c-bg);color:var(--c-text);font-size:17px;line-height:1.47;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit;cursor:button}
+
+    /* ===== RESET & TOKENS ===== */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
+      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;--c-green:#34c759;
+      --c-border:#d2d2d7;
+      --r-card:18px;--r-pill:980px;
+      --sh-card:0 2px 12px rgba(0,0,0,.08);--nav-h:52px;
+    }
+    html{scroll-behavior:smooth}
+
+    /* ===== PAGE ===== */
+    .page{max-width:1200px;margin:0 auto;padding:48px 24px}
+
+    /* ===== HEADING ===== */
+    .page__h1{font-size:clamp(28px,5vw,40px);margin-bottom:8px}
+    .page__subtitle{font-size:18px;color:var(--c-muted);margin-bottom:24px}
+
+    /* ===== BADGE ===== */
+    .badge{display:inline-block;background:var(--c-bg2);color:var(--c-muted);font-size:12px;font-weight:500;border-radius:var(--r-pill);padding:6px 14px;margin-bottom:24px}
+    .badge__coming{color:var(--c-muted)}
+
+    /* ===== FEATURES ===== */
+    .features{margin:32px 0}
+    .feature{margin-bottom:24px}
+    .feature__title{font-size:16px;font-weight:600;color:var(--c-text);margin-bottom:8px}
+    .feature__desc{font-size:15px;color:var(--c-muted);line-height:1.5}
+
+    /* ===== PLATFORM ===== */
+    .platform{border:.5px solid var(--c-border);border-radius:var(--r-card);padding:24px;margin:32px 0}
+    .platform__name{font-size:24px;font-weight:600;color:var(--c-text);margin-bottom:8px}
+    .platform__desc{font-size:15px;color:var(--c-muted);line-height:1.5}
+
+    /* ===== RESPONSIBLE-USE ===== */
+    .notice{background:var(--c-bg2);border-top:.5px solid var(--c-border);border-bottom:.5px solid var(--c-border);padding:24px;margin:32px 0}
+    .notice__title{font-size:16px;font-weight:600;color:var(--c-text);margin-bottom:8px}
+    .notice__text{font-size:15px;color:var(--c-muted);line-height:1.5}
+
+    /* ===== LINKS ===== */
+    .links{margin:32px 0}
+    .link{display:inline-block;background:var(--c-blue);color:#fff;border:none;border-radius:var(--r-pill);padding:12px 24px;font-size:15px;font-family:inherit;transition:background .15s;margin-right:16px}
+    .link:hover{background:var(--c-blue-h)}
+    .link--secondary{background:none;color:var(--c-blue);border:.8px solid var(--c-blue)}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px){.page{padding:32px 16px}.feature__title{font-size:15px}.platform{padding:16px}.link{display:block;width:100%;margin:12px 0}.link--secondary{margin:12px 0}}
+
+    /* ===== META ===== */
+    .meta{font-size:12px;color:var(--c-muted);margin-top:32px;padding-top:24px;border-top:.5px solid var(--c-border)}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Coming Soon Badge -->
+    <span class="badge badge__coming">Coming Soon</span>
+
+    <!-- Product Name -->
+    <h1 class="page__h1">SVD — Smart Video Downloader</h1>
+
+    <!-- Subtitle/Platform -->
+    <p class="page__subtitle">Chrome Extension (desktop)</p>
+
+    <!-- Product Description -->
+    <p>Smart Video Downloader (SVD) is a Chrome browser extension designed to help users detect and download supported online videos for authorized offline viewing.</p>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <div class="feature__title">Chrome Extension</div>
+        <div class="feature__desc">Works as a Chrome browser extension on desktop.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__title">Authorized Offline Viewing</div>
+        <div class="feature__desc">Intended for videos that users own or are authorized to download.</div>
+      </div>
+      <div class="feature">
+        <div class="feature__title">Responsible Use</div>
+        <div class="feature__desc">Users are responsible for respecting applicable copyright laws and website terms.</div>
+      </div>
+    </div>
+
+    <!-- Platform Info -->
+    <div class="platform">
+      <div class="platform__name">Google Chrome Extension (desktop)</div>
+      <div class="platform__desc">SVD is a Chrome browser extension for detecting and downloading supported online videos. It is not a native macOS application.</div>
+    </div>
+
+    <!-- Responsible Use Notice -->
+    <div class="notice">
+      <div class="notice__title">Responsible-Use Notice</div>
+      <div class="notice__text">
+        SVD is intended for videos that users own or are authorized to download. Users are responsible for respecting applicable copyright laws and website terms.
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="links">
+      <a class="link" href="/#apps">Back to Software Catalog</a>
+      <!-- No fake checkout or download button -->
+    </div>
+
+    <!-- Meta -->
+    <div class="meta">
+      SVD — Smart Video Downloader · Chrome Extension · Coming Soon
+    </div>
+  </div>
+</body>
+</html>

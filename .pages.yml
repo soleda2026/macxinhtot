@@ -106,6 +106,8 @@ content:
                   label: macOS
                 - name: ios
                   label: iOS
+                - name: chrome
+                  label: Chrome Extension
           - name: category
             label: Danh mục
             type: string

@@ -258,11 +258,12 @@ button{font-family:inherit;cursor:pointer}
 
 <!-- SOFTWARES -->
 <section id="apps" class="sec">
-  <div class="sec__hdr"><div><h2 class="sec__title">Softwares</h2><p class="sec__sub">Ứng dụng macOS &amp; iOS — bao gồm Apps hữu ích cho máy Mac mới</p></div></div>
+  <div class="sec__hdr"><div><h2 class="sec__title">Softwares</h2><p class="sec__sub">Ứng dụng macOS &amp; iOS — bao gồm Apps hữu ích & Chrome Extension cho máy Mac mới</p></div></div>
   <div class="tabs" role="tablist" aria-label="Lọc softwares theo nền tảng">
     <button class="tab is-active" role="tab" aria-selected="true" data-platform="all">Tất cả</button>
     <button class="tab" role="tab" aria-selected="false" data-platform="macos">macOS</button>
     <button class="tab" role="tab" aria-selected="false" data-platform="ios">iOS</button>
+    <button class="tab" role="tab" aria-selected="false" data-platform="chrome">Chrome Extension</button>
   </div>
   <div class="apps" id="apps-grid"></div>
 </section>
@@ -382,7 +383,7 @@ function makeAppCard(item) {
     : '<div class="app__icon" aria-hidden="true">'+esc(item.icon || (isIos ? '📱' : '🧩'))+'</div>';
   var version = item.version ? (/^v/i.test(item.version) ? item.version : 'v'+item.version) : '';
   var price = item.price || (item.free ? 'Miễn phí' : 'Trả phí');
-  var osLabel = item.osNote || (isIos ? 'iOS' : 'macOS');
+  var osLabel = item.osNote || (item.platform === 'chrome' ? 'Chrome' : (isIos ? 'iOS' : 'macOS'));
   var shots = (item.screenshots || []).filter(Boolean).slice(0, 3);
   var shotsHtml = shots.length
     ? '<div class="app__shots">'+shots.map(function(src){
@@ -400,9 +401,12 @@ function makeAppCard(item) {
     + '<div class="app__platform">'+esc(osLabel)+'</div>'
     + '<div class="app__foot">'
     + '<span class="app__price">'+esc(price)+'</span>'
-    + (item.url
+    + (item.name === 'SVD'
+      ? '<a class="app__svd-link" href="/svd/" target="_blank" rel="noopener" aria-label="SVD - Smart Video Downloader">Xem chi tiết</a>'
+      + '<span class="app__coming-soon">Coming Soon</span>'
+      : (item.url
       ? '<a class="app__dl" href="'+esc(safeUrl(item.url))+'" target="_blank" rel="noopener" aria-label="Tải về '+esc(item.name)+' ('+esc(osLabel)+')">⬇ Tải về</a>'
-      : '<span class="app__coming-soon">Coming Soon</span>')
+      : '<span class="app__coming-soon">Coming Soon</span>'))
     + '</div></div></article>';
 }
 

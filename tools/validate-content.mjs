@@ -68,7 +68,7 @@ for (const item of softwares || []) {
   check(typeof item.name === 'string' && item.name.trim() !== '', 'software có tên');
   check(!names.has(item.name), `software "${label}" không trùng tên`);
   names.add(item.name);
-  check(item.platform === 'macos' || item.platform === 'ios', `"${label}" có platform macos|ios`);
+  check(item.platform === 'macos' || item.platform === 'ios' || item.platform === 'chrome', `"${label}" có platform macos|ios`);
   check(typeof item.desc === 'string' && item.desc.trim() !== '', `"${label}" có mô tả`);
   check(typeof item.free === 'boolean', `"${label}" có free dạng boolean`);
   check(typeof item.price === 'string', `"${label}" có price dạng chuỗi`);

@@ -91,6 +91,7 @@
     {
       "name": "SVD",
       "icon": "\ud83c\udfac",
+      "image": "assets/svd/svd-icon.png",
       "platform": "chrome",
       "category": "Browser Extension \u00b7 Video Tools",
       "desc": "Smart Video Downloader (SVD) is a Chrome browser extension designed to help users detect and download supported online videos for authorized offline viewing. Coming Soon.",

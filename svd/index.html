@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SVD — Smart Video Downloader</title>
   <link rel="canonical" href="https://macxinhtot.com/svd/">
+  <meta name="description" content="Smart Video Downloader (SVD) — Chrome browser extension for downloading supported online videos for authorized offline viewing. Coming Soon.">
   <style>
     :root {
       --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
-      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;
-      --c-green:#34c759;--c-border:#d2d2d7;
+      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;--c-green:#34c759;
+      --c-border:#d2d2d7;
       --r-card:18px;--r-pill:980px;
       --sh-card:0 2px 12px rgba(0,0,0,.08);
+      --nav-h:52px;
     }
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -20,111 +22,167 @@
     a{color:inherit;text-decoration:none}
     button{font-family:inherit;cursor:button}
 
-    /* ===== RESET & TOKENS ===== */
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{
-      --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
-      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;--c-green:#34c759;
-      --c-border:#d2d2d7;
-      --r-card:18px;--r-pill:980px;
-      --sh-card:0 2px 12px rgba(0,0,0,.08);--nav-h:52px;
-    }
-    html{scroll-behavior:smooth}
-
-    /* ===== PAGE ===== */
+    /* ===== PAGE WRAPPER ===== */
     .page{max-width:1200px;margin:0 auto;padding:48px 24px}
 
-    /* ===== HEADING ===== */
-    .page__h1{font-size:clamp(28px,5vw,40px);margin-bottom:8px}
-    .page__subtitle{font-size:18px;color:var(--c-muted);margin-bottom:24px}
-
     /* ===== BADGE ===== */
-    .badge{display:inline-block;background:var(--c-bg2);color:var(--c-muted);font-size:12px;font-weight:500;border-radius:var(--r-pill);padding:6px 14px;margin-bottom:24px}
-    .badge__coming{color:var(--c-muted)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--c-bg2);color:var(--c-muted);font-size:12px;font-weight:600;border-radius:var(--r-pill);padding:6px 14px;margin-bottom:32px}
 
-    /* ===== FEATURES ===== */
-    .features{margin:32px 0}
-    .feature{margin-bottom:24px}
-    .feature__title{font-size:16px;font-weight:600;color:var(--c-text);margin-bottom:8px}
-    .feature__desc{font-size:15px;color:var(--c-muted);line-height:1.5}
+    /* ===== HERO ===== */
+    .hero{text-align:center;margin-bottom:64px}
+    .hero__icon{width:88px;height:88px;border-radius:24px;object-fit:cover;display:block;margin:0 auto 24px}
+    .hero__title{font-size:clamp(32px,6vw,56px);font-weight:700;letter-spacing:-.5px;margin-bottom:16px}
+    .hero__subtitle{font-size:clamp(16px,2.5vw,20px);color:var(--c-muted);margin-bottom:24px;line-height:1.6}
+    .hero__cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:var(--r-pill);font-size:16px;font-weight:600;text-decoration:none;font-family:inherit;transition:background .15s,border-color .15s}
+    .btn--primary{background:var(--c-blue);color:#fff;border:none}
+    .btn--primary:hover{background:var(--c-blue-h)}
+    .btn--secondary{background:none;border:.8px solid var(--c-border);color:var(--c-text)}
+    .btn--secondary:hover{border-color:var(--c-blue);color:var(--c-blue)}
+    .btn--disabled{background:#e5e5ea;border-color:#e5e5ea;color:#a1a1aa;cursor:not-allowed}
 
-    /* ===== PLATFORM ===== */
-    .platform{border:.5px solid var(--c-border);border-radius:var(--r-card);padding:24px;margin:32px 0}
-    .platform__name{font-size:24px;font-weight:600;color:var(--c-text);margin-bottom:8px}
-    .platform__desc{font-size:15px;color:var(--c-muted);line-height:1.5}
+    /* ===== PRICING ===== */
+    .pricing{margin-bottom:64px}
+    .pricing__title{font-size:28px;font-weight:700;text-align:center;margin-bottom:40px}
+    .pricing__cards{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+    .card{background:var(--c-white);border:.5px solid var(--c-border);border-radius:var(--r-card);padding:32px;width:340px;display:flex;flex-direction:column;position:relative;transition:border-color .15s}
+    .card:hover{border-color:var(--c-blue)}
+    .card__tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--c-blue);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.4px}
+    .card__name{font-size:22px;font-weight:700;margin-bottom:8px}
+    .card__price{font-size:40px;font-weight:700;margin-bottom:4px}
+    .card__price span{font-size:18px;font-weight:400;color:var(--c-muted)}
+    .card__desc{font-size:15px;color:var(--c-muted);margin-bottom:24px;line-height:1.6}
+    .card__feature{font-size:14px;color:var(--c-text);margin-bottom:10px;display:flex;align-items:flex-start;gap:10px}
+    .card__feature.ok{color:var(--c-green)}
+    .card__feature.limit{color:var(--c-muted)}
+    .card__feature.ok::before{content:'✓';color:var(--c-green);font-weight:700;width:16px}
+    .card__feature.limit::before{content:'•';color:var(--c-muted);width:16px}
+    .card__footer{margin-top:auto}
 
-    /* ===== RESPONSIBLE-USE ===== */
-    .notice{background:var(--c-bg2);border-top:.5px solid var(--c-border);border-bottom:.5px solid var(--c-border);padding:24px;margin:32px 0}
-    .notice__title{font-size:16px;font-weight:600;color:var(--c-text);margin-bottom:8px}
-    .notice__text{font-size:15px;color:var(--c-muted);line-height:1.5}
+    /* ===== COOLDOWN EXPLANATION ===== */
+    .cooldown{background:var(--c-bg2);border-radius:var(--r-card);padding:32px;margin-bottom:64px}
+    .cooldown__title{font-size:20px;font-weight:700;margin-bottom:16px}
+    .cooldown__grid{display:grid;gap:16px}
+    .cooldown__item{background:var(--c-white);border:.5px solid var(--c-border);border-radius:12px;padding:20px}
+    .cooldown__item__title{font-size:16px;font-weight:600;margin-bottom:8px}
+    .cooldown__item__desc{font-size:14px;color:var(--c-muted);line-height:1.5}
 
-    /* ===== LINKS ===== */
-    .links{margin:32px 0}
-    .link{display:inline-block;background:var(--c-blue);color:#fff;border:none;border-radius:var(--r-pill);padding:12px 24px;font-size:15px;font-family:inherit;transition:background .15s;margin-right:16px}
-    .link:hover{background:var(--c-blue-h)}
-    .link--secondary{background:none;color:var(--c-blue);border:.8px solid var(--c-blue)}
+    /* ===== RESPONSIBLE USE ===== */
+    .notice{background:var(--c-bg2);border-top:.5px solid var(--c-border);border-bottom:.5px solid var(--c-border);padding:32px;margin-bottom:64px}
+    .notice__title{font-size:16px;font-weight:600;margin-bottom:8px}
+    .notice__text{font-size:15px;color:var(--c-muted);line-height:1.6}
+
+    /* ===== FOOTER ===== */
+    .footer{border-top:.5px solid var(--c-border);padding:40px 0;margin-top:40px}
+    .footer__links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+    .footer__link{font-size:14px;color:var(--c-muted)}
+    .footer__link:hover{color:var(--c-blue)}
+    .footer__meta{font-size:12px;color:var(--c-muted);text-align:center;margin-top:24px}
 
     /* ===== RESPONSIVE ===== */
-    @media(max-width:768px){.page{padding:32px 16px}.feature__title{font-size:15px}.platform{padding:16px}.link{display:block;width:100%;margin:12px 0}.link--secondary{margin:12px 0}}
-
-    /* ===== META ===== */
-    .meta{font-size:12px;color:var(--c-muted);margin-top:32px;padding-top:24px;border-top:.5px solid var(--c-border)}
+    @media(max-width:768px){
+      .page{padding:32px 16px}
+      .hero__icon{width:72px;height:72px;font-size:34px}
+      .hero__title{font-size:32px}
+      .card{width:100%;max-width:320px}
+      .footer__links{flex-direction:column;gap:16px;align-items:center}
+    }
   </style>
 </head>
 <body>
   <div class="page">
+
     <!-- Coming Soon Badge -->
-    <span class="badge badge__coming">Coming Soon</span>
+    <span class="badge">Coming Soon</span>
 
-    <!-- Product Name -->
-    <h1 class="page__h1">SVD — Smart Video Downloader</h1>
-
-    <!-- Subtitle/Platform -->
-    <p class="page__subtitle">Chrome Extension (desktop)</p>
-
-    <!-- Product Description -->
-    <p>Smart Video Downloader (SVD) is a Chrome browser extension designed to help users detect and download supported online videos for authorized offline viewing.</p>
-
-    <!-- Features -->
-    <div class="features">
-      <div class="feature">
-        <div class="feature__title">Chrome Extension</div>
-        <div class="feature__desc">Works as a Chrome browser extension on desktop.</div>
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero__icon" src="/assets/svd/svd-icon.png" alt="SVD icon" loading="lazy">
+      <h1 class="hero__title">SVD — Smart Video Downloader</h1>
+      <p class="hero__subtitle">A Chrome browser extension that helps you detect and download supported online videos for authorized offline viewing.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="/#apps">Back to Software Catalog</a>
+        <a class="btn btn--secondary" href="mailto:contact@macxinhtot.com">Contact Us</a>
       </div>
-      <div class="feature">
-        <div class="feature__title">Authorized Offline Viewing</div>
-        <div class="feature__desc">Intended for videos that users own or are authorized to download.</div>
-      </div>
-      <div class="feature">
-        <div class="feature__title">Responsible Use</div>
-        <div class="feature__desc">Users are responsible for respecting applicable copyright laws and website terms.</div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Platform Info -->
-    <div class="platform">
-      <div class="platform__name">Google Chrome Extension (desktop)</div>
-      <div class="platform__desc">SVD is a Chrome browser extension for detecting and downloading supported online videos. It is not a native macOS application.</div>
-    </div>
+    <!-- Pricing -->
+    <section class="pricing">
+      <h2 class="pricing__title">Pricing</h2>
+      <div class="pricing__cards">
 
-    <!-- Responsible Use Notice -->
-    <div class="notice">
+        <!-- Free Card -->
+        <article class="card">
+          <span class="card__tag">Free</span>
+          <div class="card__name">SVD Free</div>
+          <div class="card__price">$0<span>/year</span></div>
+          <div class="card__desc">One download per 60 minutes. Cooldown begins after each successful download.</div>
+          <ul>
+            <li class="card__feature ok">1 download per 60 minutes</li>
+            <li class="card__feature ok">Authorized offline viewing</li>
+            <li class="card__feature limit">60-minute cooldown between downloads</li>
+            <li class="card__feature limit">Failed downloads do not consume allowance</li>
+          </ul>
+          <div class="card__footer">
+            <a class="btn btn--secondary btn--disabled" href="#">Coming Soon</a>
+          </div>
+        </article>
+
+        <!-- Premium Card -->
+        <article class="card">
+          <span class="card__tag">Premium</span>
+          <div class="card__name">SVD Premium</div>
+          <div class="card__price">$1.99<span>/year</span></div>
+          <div class="card__desc">Annual subscription. No cooldown between downloads.</div>
+          <ul>
+            <li class="card__feature ok">No 60-minute cooldown</li>
+            <li class="card__feature ok">Unlimited downloads</li>
+            <li class="card__feature ok">Annual subscription renewal</li>
+            <li class="card__feature ok">Authorized offline viewing</li>
+          </ul>
+          <div class="card__footer">
+            <a class="btn btn--secondary btn--disabled" href="#">Coming Soon</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cooldown Explanation -->
+    <section class="cooldown">
+      <h2 class="cooldown__title">How the Free Cooldown Works</h2>
+      <div class="cooldown__grid">
+        <div class="cooldown__item">
+          <div class="cooldown__item__title">One download per 60 minutes</div>
+          <div class="cooldown__item__desc">Free users can download one supported video every 60 minutes. The cooldown timer starts after a successful download completes.</div>
+        </div>
+        <div class="cooldown__item">
+          <div class="cooldown__item__title">Failed downloads are free</div>
+          <div class="cooldown__item__desc">If a download fails, it does not count against your allowance and does not start a cooldown.</div>
+        </div>
+        <div class="cooldown__item">
+          <div class="cooldown__item__title">Upgrade to Premium</div>
+          <div class="cooldown__item__desc">SVD Premium removes the cooldown entirely for $1.99/year, with annual renewal.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsible Use -->
+    <section class="notice">
       <div class="notice__title">Responsible-Use Notice</div>
       <div class="notice__text">
-        SVD is intended for videos that users own or are authorized to download. Users are responsible for respecting applicable copyright laws and website terms.
+        SVD is intended for videos that you own or are authorized to download. Users are responsible for respecting applicable copyright laws and website terms of service.
       </div>
-    </div>
+    </section>
 
-    <!-- Links -->
-    <div class="links">
-      <a class="link" href="/#apps">Back to Software Catalog</a>
-      <!-- No fake checkout or download button -->
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__links">
+        <a class="footer__link" href="/#apps">Software Catalog</a>
+        <a class="footer__link" href="mailto:contact@macxinhtot.com">Contact</a>
+      </div>
+      <div class="footer__meta">SVD — Smart Video Downloader · Chrome Extension · Coming Soon</div>
+    </footer>
 
-    <!-- Meta -->
-    <div class="meta">
-      SVD — Smart Video Downloader · Chrome Extension · Coming Soon
-    </div>
   </div>
 </body>
 </html>

@@ -144,6 +144,95 @@ const { chromium } = require('playwright');
       if (title !== 'SVD — Smart Video Downloader') throw new Error(`Unexpected SVD page title: ${title}`);
     });
 
+    await test('/svd/ pricing displays Free $0', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.card__name', { timeout: 5000 });
+      const names = await page.$$eval('.card__name', els => els.map(e => e.textContent.trim()));
+      const prices = await page.$$eval('.card__price', els => els.map(e => e.textContent.trim()));
+      if (!names.includes('SVD Free')) throw new Error(`Expected SVD Free card, got ${names.join(', ')}`);
+      const freeIdx = names.indexOf('SVD Free');
+      if (!prices[freeIdx].includes('$0')) throw new Error(`Expected $0 price for SVD Free, got ${prices[freeIdx]}`);
+    });
+
+    await test('/svd/ pricing displays Premium $1.99/year', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.card__name', { timeout: 5000 });
+      const names = await page.$$eval('.card__name', els => els.map(e => e.textContent.trim()));
+      const prices = await page.$$eval('.card__price', els => els.map(e => e.textContent.trim()));
+      if (!names.includes('SVD Premium')) throw new Error(`Expected SVD Premium card, got ${names.join(', ')}`);
+      const premIdx = names.indexOf('SVD Premium');
+      if (!prices[premIdx].includes('$1.99')) throw new Error(`Expected $1.99 price, got ${prices[premIdx]}`);
+      if (!prices[premIdx].includes('/year')) throw new Error(`Expected /year, got ${prices[premIdx]}`);
+    });
+
+    await test('/svd/ Coming Soon buttons are disabled (no checkout)', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.btn', { timeout: 5000 });
+      const btnClasses = await page.$$eval('.btn', els => els.map(e => e.className));
+      const disabledCount = btnClasses.filter(c => c.includes('btn--disabled')).length;
+      if (disabledCount !== 2) throw new Error(`Expected 2 disabled Coming Soon buttons, got ${disabledCount}`);
+    });
+
+    await test('/svd/ has no fake download button', async () => {
+      await page.goto(baseUrl + 'svd/');
+      const downloadBtns = await page.$$eval('a', els => els.filter(e => e.textContent.toLowerCase().includes('download') && !e.textContent.toLowerCase().includes('catalog')));
+      if (downloadBtns.length > 0) throw new Error('Found fake download button on /svd/');
+    });
+
+    await test('/svd/ displays cooldown explanation', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.cooldown__title', { timeout: 5000 });
+      const cooldownTitle = await page.$eval('.cooldown__title', el => el.textContent.trim());
+      if (!cooldownTitle.includes('Cooldown')) throw new Error(`Expected cooldown section, got ${cooldownTitle}`);
+    });
+
+    await test('/svd/ displays responsible-use notice', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.notice__title', { timeout: 5000 });
+      const noticeTitle = await page.$eval('.notice__title', el => el.textContent.trim());
+      if (!noticeTitle.includes('Responsible-Use')) throw new Error(`Expected responsible-use notice, got ${noticeTitle}`);
+    });
+
+    await test('/svd/ Coming Soon badge visible', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.badge', { timeout: 5000 });
+      const badgeText = await page.$eval('.badge', el => el.textContent.trim());
+      if (!badgeText.includes('Coming Soon')) throw new Error(`Expected Coming Soon badge, got ${badgeText}`);
+    });
+
+    await test('/svd/ official icon loads', async () => {
+      await page.goto(baseUrl + 'svd/');
+      await page.waitForSelector('.hero__icon', { timeout: 5000 });
+      const iconSrc = await page.$eval('.hero__icon', el => el.getAttribute('src'));
+      if (!iconSrc.includes('svd-icon.png')) throw new Error(`Expected svd-icon.png, got ${iconSrc}`);
+      const naturalWidth = await page.evaluate(() => {
+        const img = document.querySelector('.hero__icon');
+        return img.naturalWidth;
+      });
+      if (!naturalWidth || naturalWidth < 100) throw new Error(`Icon image did not load (naturalWidth=${naturalWidth})`);
+    });
+
+    await test('SVD catalog card displays official icon', async () => {
+      await page.goto(baseUrl + '#apps');
+      await page.waitForSelector('#apps-grid .app', { timeout: 15000 });
+      const svdCards = await page.$$('#apps-grid .app');
+      let svdFound = false;
+      for (const el of svdCards) {
+        const text = await page.evaluate(el => el.textContent.trim(), el);
+        if (text.includes('SVD')) {
+          svdFound = true;
+          const iconImg = await el.$('.app__icon img');
+          if (!iconImg) throw new Error('SVD catalog card has no icon image');
+          const src = await iconImg.getAttribute('src');
+          if (!src.includes('svd-icon.png')) throw new Error(`Expected svd-icon.png, got ${src}`);
+          const naturalWidth = await page.evaluate(el => el.naturalWidth, iconImg);
+          if (!naturalWidth || naturalWidth < 100) throw new Error(`Icon image did not load (naturalWidth=${naturalWidth})`);
+          break;
+        }
+      }
+      if (!svdFound) throw new Error('SVD card not found in catalog');
+    });
+
     await test('No console errors on catalog page', async () => {
       const consoleErrors = [];
       page.on('console', m => consoleErrors.push({ type: m.type(), text: m.text() }));

@@ -139,3 +139,45 @@ content:
             label: Ghi chú nền tảng
             type: string
             description: Hiển thị cạnh nút tải, ví dụ "macOS · Win". Để trống sẽ dùng macOS/iOS.
+
+  - name: articles
+    label: Bài viết
+    type: file
+    path: articles/
+    format: json
+    fields:
+      - name: title
+        label: Tiêu đề
+        type: string
+        required: true
+      - name: slug
+        label: Đường dẫn tĩnh (slug)
+        type: string
+        required: true
+        description: URL-friendly identifier, ví dụ "huong-dan-ve-macbook"
+      - name: category
+        label: Danh mục
+        type: string
+        description: Ví dụ Hướng dẫn, Tin tức, Sản phẩm.
+      - name: coverImage
+        label: Ảnh bìa
+        type: image
+        description: Ảnh đại diện cho bài viết.
+        options:
+          extensions: [jpg, jpeg, png, webp, avif]
+      - name: summary
+        label: Tóm tắt
+        type: text
+        description: Mô tả ngắn hiển thị trên trang liệt kê bài viết.
+      - name: body
+        label: Nội dung
+        type: text
+        description: Nội dung bài viết định dạng Markdown.
+      - name: publishedDate
+        label: Ngày đăng
+        type: datetime
+        description: Ngày xuất bản bài viết.
+      - name: draft
+        label: BẢo thảo
+        type: boolean
+        description: Nếu chọn true, bài viết không xuất bản công khai.

@@ -96,5 +96,37 @@ for (const needle of ['path: products.json', 'path: softwares.json', 'input: ass
   check(pagesConfig.includes(needle), `.pages.yml có "${needle}"`);
 }
 
+const articlesIndex = read('articles/articles.json');
+const articles = JSON.parse(articlesIndex);
+check(Array.isArray(articles), 'articles/articles.json là mảng');
+const articleSlugs = new Set();
+for (const item of articles || []) {
+  const label = item.title || '(không tiêu đề)';
+  check(typeof item.title === 'string' && item.title.trim() !== '', `bài viết "${label}" có tiêu đề`);
+  check(typeof item.slug === 'string' && item.slug.trim() !== '', `bài viết "${label}" có slug`);
+  if (item.slug) {
+    check(!articleSlugs.has(item.slug), `slug "${item.slug}" không trùng`);
+    articleSlugs.add(item.slug);
+  }
+  check(typeof item.category === 'string', `bài viết "${label}" có danh mục`);
+  check(typeof item.summary === 'string', `bài viết "${label}" có tóm tắt`);
+  check(typeof item.body === 'string', `bài viết "${label}" có nội dung`);
+  check(item.draft === true || item.draft === false, `bài viết "${label}" có draft boolean`);
+  if (item.publishedDate) {
+    check(!isNaN(Date.parse(item.publishedDate)), `bài viết "${label}" có ngày xuất bản hợp lệ`);
+  }
+  // Draft articles must not be in published list
+  if (item.draft === true) {
+    check(!item.publishedDate || true, `bài viết "${label}" là draft (không xuất bản)`);
+  }
+  // Article JSON file exists
+  if (item.slug) {
+    check(exists('articles/'+item.slug+'.json'), `bài viết "${label}" có file JSON "${item.slug}.json"`);
+  }
+}
+check(exists('articles/index.html'), 'tồn tại trang liệt kê bài viết articles/index.html');
+check(exists('articles/article.html'), 'tồn tại trang chi tiết bài viết articles/article.html');
+check(html.includes('/articles/'), 'index.html có liên kết đến /articles/');
+
 console.log(`\n${failures ? `${failures} kiểm tra thất bại` : 'Tất cả kiểm tra đạt'}`);
 process.exit(failures ? 1 : 0);

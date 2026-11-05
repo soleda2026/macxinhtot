@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Bài viết — Mắc Xinh Tốt</title>
+  <link rel="canonical" href="https://macxinhtot.com/articles/article.html">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
+      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;
+      --c-border:#d2d2d7;--r-card:16px;--nav-h:52px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--c-bg);color:var(--c-text);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    .page{max-width:760px;margin:0 auto;padding:48px 24px}
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid rgba(0,0,0,.1)}
+    .nav__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:100%;padding:0 20px}
+    .nav__links{display:flex;flex:1;justify-content:center;gap:0}
+    .nav__links a{color:var(--c-muted);font-size:13px;padding:0 11px;height:var(--nav-h);display:flex;align-items:center;transition:color .15s;white-space:nowrap}
+    .nav__links a:hover{color:var(--c-text)}
+    .nav__actions{display:flex;gap:4px;margin-left:auto}
+    .nav__btn{background:none;border:none;color:var(--c-muted);padding:8px;border-radius:50%;font-size:17px;line-height:1}
+
+    /* Article header */
+    .article-header{margin-bottom:40px}
+    .article__badge{display:inline-flex;align-items:center;gap:8px;background:var(--c-bg2);color:var(--c-muted);font-size:12px;font-weight:600;border-radius:980px;padding:6px 14px;margin-bottom:20px}
+    .article__title{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:16px}
+    .article__meta{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;font-size:14px;color:var(--c-muted);margin-bottom:24px}
+    .article__cover{width:100%;height:260px;object-fit:cover;border-radius:12px;margin-bottom:24px;background:var(--c-bg2)}
+
+    /* Article content (markdown rendered) */
+    .article-content{line-height:1.75}
+    .article-content h1{font-size:26px;font-weight:800;margin:28px 0 12px;letter-spacing:-.01em}
+    .article-content h2{font-size:22px;font-weight:700;margin:24px 0 10px;letter-spacing:-.01em}
+    .article-content h3{font-size:18px;font-weight:600;margin:20px 0 8px;color:var(--c-text)}
+    .article-content p{margin:0 0 16px}
+    .article-content a{color:var(--c-blue);text-decoration:underline;text-underline-offset:4px}
+    .article-content a:hover{color:var(--c-blue-h)}
+    .article-content strong{font-weight:700;color:var(--c-text)}
+    .article-content em{font-style:italic}
+    .article-content ul,.article-content ol{margin:0 0 16px 22px;padding:0}
+    .article-content li{margin:0 0 6px;color:var(--c-text)}
+    .article-content hr{border:none;border-top:.5px solid var(--c-border);margin:24px 0}
+    .article-content blockquote{border-left:3px solid var(--c-blue);margin:0 0 16px 12px;padding-left:16px;color:var(--c-muted);font-style:italic}
+
+    .article-footer{margin-top:48px;padding-top:24px;border-top:.5px solid var(--c-border);font-size:14px;color:var(--c-muted)}
+    .article-footer a{color:var(--c-blue);text-decoration:none}
+    .article-footer a:hover{text-decoration:underline}
+
+    .back-link{font-size:14px;color:var(--c-blue);text-decoration:underline;text-underline-offset:4px;display:inline-block;margin-bottom:24px}
+    .back-link:hover{color:var(--c-blue-h)}
+
+    .not-found{text-align:center;padding:60px 24px}
+    .not-found p{font-size:16px;color:var(--c-muted);margin-bottom:16px}
+
+    .footer{border-top:.5px solid var(--c-border);padding:32px 0;margin-top:48px}
+    .footer__links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+    .footer__link{font-size:13px;color:var(--c-muted)}
+    .footer__link:hover{color:var(--c-blue)}
+    .footer__meta{font-size:12px;color:var(--c-muted);text-align:center;margin-top:20px}
+
+    @media(max-width:768px){
+      .page{padding:32px 16px}
+      .nav__links{flex-wrap:wrap}
+      .nav__links a{font-size:10px;padding:0 4px}
+      .nav__actions{margin-left:0;order:99}
+      .article__cover{height:180px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Menu chính">
+    <div class="nav__inner">
+      <div class="nav__links">
+        <a href="#laptops">Laptops</a>
+        <a href="#desktops">Desktops</a>
+        <a href="#harddrive">Hard Drive</a>
+        <a href="#accessories">Accessories</a>
+        <a href="#apps">Softwares</a>
+        <a href="/articles/" style="color:var(--c-text)">Bài viết</a>
+        <a href="#contact">Liên hệ</a>
+      </div>
+      <div class="nav__actions">
+        <button class="nav__btn" aria-label="Tìm kiếm">🔍</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+    <a class="back-link" href="/articles/">&larr; Về danh sách bài viết</a>
+
+    <article id="article-container">
+      <!-- Article rendered here by JavaScript -->
+    </article>
+
+    <div id="article-not-found" class="not-found" style="display:none">
+      <p>Không tìm thấy bài viết.</p>
+      <a class="back-link" href="/articles/">Về danh sách bài viết</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__links">
+      <a class="footer__link" href="/">Trang chủ</a>
+      <a class="footer__link" href="/#apps">Softwares</a>
+      <a class="footer__link" href="#contact">Liên hệ</a>
+    </div>
+    <div class="footer__meta">Mắc Xinh Tốt · Chuyên gia Mac tại TP.HCM</div>
+  </footer>
+
+  <script>
+    // Minimal Markdown-to-HTML with XSS protection
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+
+    function markdownToHtml(md) {
+      var text = String(md || '');
+      // Horizontal rules
+      text = text.replace(/^---+\s*$/gm, '<hr>');
+      // Headings (###, ##, #)
+      text = text.replace(/^(#{1,6})\s+(.+)$/gm, function(m, hashes, content){
+        var level = hashes.length;
+        return '<h'+level+'>'+inline(content)+'</h'+level+'>';
+      });
+      // Blockquotes
+      text = text.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
+      // Lists (- item)
+      text = text.replace(/^(-|\*|\+)\s+(.+)$/gm, '<li>$2</li>');
+      // Wrap consecutive <li> in <ul>
+      text = text.replace(/(<li>.*<\/li>)(\s*)(<li>.*<\/li>)/gs, function(m, a, b, c){
+        return '<ul>'+a+c+'</ul>';
+      });
+      // Wrap standalone <li>
+      text = text.replace(/(?:^|\n)(<li>.*<\/li>)/g, '<ul>$1</ul>');
+      // Paragraphs: split on blank lines
+      var parts = text.split(/\n\s*\n/);
+      text = parts.map(function(p){
+        p = p.trim();
+        if (!p) return '';
+        // Skip already-wrapped block elements
+        if (/^<(h[1-6]|blockquote|ul|hr|li)>/.test(p)) return p;
+        return '<p>'+inline(p)+'</p>';
+      }).join('\n');
+      // Clean up empty paragraphs and extra newlines
+      text = text.replace(/<p>\s*<\/p>/g, '');
+      text = text.replace(/\n+/g, '');
+      return text;
+    }
+
+    function inline(md) {
+      var text = String(md || '');
+      // Links [text](url) — escape URL
+      text = text.replace(/\[([^\]]*)\]\(([^)]*)\)/g, function(m, label, url){
+        var safeUrl = /^https?:\/\//i.test(url) ? url : '#';
+        return '<a href="'+escapeHtml(safeUrl)+'">'+inline(label)+'</a>';
+      });
+      // Bold **text**
+      text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      // Italic *text* (not followed by another *)
+      text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+      // Escape remaining HTML
+      text = escapeHtml(text);
+      // Re-insert the tags we created (they were escaped)
+      text = text.replace(/&lt;strong&gt;(.*?)&lt;\/strong&gt;/g, '<strong>$1</strong>');
+      text = text.replace(/&lt;em&gt;(.*?)&lt;\/em&gt;/g, '<em>$1</em>');
+      text = text.replace(/&lt;a href="([^"]*)&quot;([^"]*)&quot;"&gt;/g, '<a href="$1$2">');
+      text = text.replace(/&lt;\/a&gt;/g, '</a>');
+      return text;
+    }
+
+    (function() {
+      var container = document.getElementById('article-container');
+      var notFound = document.getElementById('article-not-found');
+      var pageTitle = document.getElementById('page-title');
+
+      var params = new URLSearchParams(window.location.search);
+      var slug = params.get('slug');
+
+      if (!slug) {
+        container.style.display = 'none';
+        notFound.style.display = 'block';
+        return;
+      }
+
+      fetch('/articles/'+slug+'.json')
+        .then(function(r){
+          if (!r.ok) throw new Error('not found');
+          return r.json();
+        })
+        .then(function(article){
+          if (article.draft === true) {
+            container.style.display = 'none';
+            notFound.style.display = 'block';
+            return;
+          }
+          document.title = article.title + ' — Mắc Xinh Tốt';
+          pageTitle.textContent = article.title + ' — Mắc Xinh Tốt';
+
+          var cover = article.coverImage ? '<img class="article__cover" src="'+escapeHtml(article.coverImage)+'" alt="">' : '';
+          var date = article.publishedDate ? new Date(article.publishedDate).toLocaleDateString('vi-VN') : '';
+          var bodyHtml = markdownToHtml(article.body);
+
+          container.innerHTML = ''+
+            (article.coverImage ? cover : '')+
+            '<div class="article__badge">'+escapeHtml(article.category||'')+'</div>'+
+            '<h1 class="article__title">'+escapeHtml(article.title)+'</h1>'+
+            '<div class="article__meta">'+
+              (article.category ? '<span>'+escapeHtml(article.category)+'</span>' : '')+
+              (date ? '<span>'+date+'</span>' : '')+
+            '</div>'+
+            '<div class="article-content">'+bodyHtml+'</div>'+
+            '<div class="article-footer">'+
+              'Bài viết: '+escapeHtml(article.title)+' · '+
+              (article.category ? escapeHtml(article.category)+' · ' : '')+
+              (date ? date+' · ' : '')+
+              'Coming Soon'+
+            '</div>';
+        })
+        .catch(function(){
+          container.style.display = 'none';
+          notFound.style.display = 'block';
+        });
+    })();
+  </script>
+</body>
+</html>

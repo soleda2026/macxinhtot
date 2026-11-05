@@ -1,7 +1,9 @@
-// Regression tests for MXT-CMS-003C
-// Tests SVD catalog integration
+// Regression tests for MXT-CMS-004
+// Tests SVD catalog integration and article publishing
 
 const { chromium } = require('playwright');
+const fs = require('node:fs');
+const { execSync } = require('node:child_process');
 
 (async () => {
   const browser = await chromium.launch({
@@ -29,6 +31,36 @@ const { chromium } = require('playwright');
   console.log('MXT-CMS-003C Regression Tests\n');
 
   const baseUrl = 'http://127.0.0.1:8000/';
+
+  // Setup: create test articles and run build pipeline
+  const testPublished = {
+    title: 'Hướng dẫn chọn MacBook',
+    slug: 'huong-dan-chon-macbook',
+    category: 'Hướng dẫn',
+    coverImage: 'assets/uploads/sample-cover.jpg',
+    summary: 'Hướng dẫn chọn MacBook phù hợp cho nhu cầu làm việc và sáng tạo.',
+    body: '# Hướng dẫn chọn MacBook\n\nBài viết này giúp bạn chọn MacBook phù hợp nhất.',
+    publishedDate: '2026-11-05T00:00:00Z',
+    draft: false,
+  };
+  const testDraft = {
+    title: 'Bài viết bảo thảo',
+    slug: 'bai-viet-bao-thao',
+    category: 'Tin tức',
+    coverImage: '',
+    summary: 'Bài viết này đang bảo thảo.',
+    body: 'Nội dung bảo thảo.',
+    publishedDate: '2026-11-05T00:00:00Z',
+    draft: true,
+  };
+  fs.writeFileSync('articles/huong-dan-chon-macbook.json', JSON.stringify(testPublished, null, 2));
+  fs.writeFileSync('articles/bai-viet-bao-thao.json', JSON.stringify(testDraft, null, 2));
+  try {
+    execSync('node tools/build-articles.mjs', { stdio: 'inherit' });
+  } catch (err) {
+    console.error('Build failed:', err.message);
+    process.exit(1);
+  }
 
   for (const vp of [{ width: 390, height: 844 }, { width: 768, height: 1000 }, { width: 1440, height: 1000 }]) {
     console.log(`\n=== Viewport: ${vp.width}x${vp.height} ===`);
@@ -267,10 +299,85 @@ const { chromium } = require('playwright');
       if (count !== 1) throw new Error(`Chrome Extension filter should show 1 card, got ${count}`);
     });
 
+    await test('/articles/ listing page loads', async () => {
+      await page.goto(baseUrl + 'articles/', { waitUntil: 'networkidle' });
+      await page.waitForFunction(() => {
+        const grid = document.querySelector('#articles-grid');
+        const empty = document.querySelector('#articles-empty');
+        return (grid && grid.children.length > 0) || (empty && empty.style.display !== 'none');
+      }, { timeout: 10000 });
+    });
+
+    await test('/articles/ listing shows published article', async () => {
+      const articleCount = await page.$$eval('#articles-grid .article-card', els => els.length);
+      if (articleCount !== 1) throw new Error(`Expected 1 published article, got ${articleCount}`);
+      const titles = await page.$$eval('#articles-grid .card__title', els => els.map(e => e.textContent.trim()));
+      if (!titles.includes('Hướng dẫn chọn MacBook')) throw new Error('Published article not found in listing');
+    });
+
+    await test('/articles/ listing excludes draft articles', async () => {
+      const titles = await page.$$eval('#articles-grid .card__title', els => els.map(e => e.textContent.trim()));
+      if (titles.includes('Bài viết bảo thảo')) throw new Error('Draft article should not appear in public listing');
+    });
+
+    await test('/articles/ article detail loads for published slug', async () => {
+      await page.goto(baseUrl + 'articles/article.html?slug=huong-dan-chon-macbook', { waitUntil: 'networkidle' });
+      await page.waitForSelector('.article__title', { timeout: 5000 });
+      const title = await page.$eval('.article__title', el => el.textContent.trim());
+      if (title !== 'Hướng dẫn chọn MacBook') throw new Error(`Unexpected article title: ${title}`);
+    });
+
+    await test('/articles/ article detail rejects draft slug', async () => {
+      await page.goto(baseUrl + 'articles/article.html?slug=bai-viet-bao-thao', { waitUntil: 'networkidle' });
+      await page.waitForSelector('#article-not-found', { timeout: 5000 });
+      const notFoundVisible = await page.isVisible('#article-not-found');
+      if (!notFoundVisible) throw new Error('Draft article should not be publicly accessible');
+    });
+
+    await test('/articles/ article detail rejects missing slug', async () => {
+      await page.goto(baseUrl + 'articles/article.html');
+      await page.waitForSelector('#article-not-found', { timeout: 5000 });
+      const notFoundVisible = await page.isVisible('#article-not-found');
+      if (!notFoundVisible) throw new Error('Article not-found state should show when no slug');
+    });
+
+    await test('/articles/ article detail rejects invalid slug', async () => {
+      await page.goto(baseUrl + 'articles/article.html?slug=nonexistent');
+      await page.waitForSelector('#article-not-found', { timeout: 5000 });
+      const notFoundVisible = await page.isVisible('#article-not-found');
+      if (!notFoundVisible) throw new Error('Article not-found state should show for invalid slug');
+    });
+    await test('/articles/ published article JSON is accessible via direct URL', async () => {
+      const response = await page.request.get(baseUrl + 'articles/huong-dan-chon-macbook.json');
+      if (response.status() !== 200) throw new Error('Published article JSON should return 200, got ' + response.status());
+      const body = await response.text();
+      const data = JSON.parse(body);
+      if (data.slug !== 'huong-dan-chon-macbook') throw new Error('Published article JSON has unexpected slug: ' + data.slug);
+    });
+
+    await test('/articles/ draft article JSON is physically removed from artifact', async () => {
+      const response = await page.request.get(baseUrl + 'articles/bai-viet-bao-thao.json');
+      if (response.status() !== 404) throw new Error('Draft article JSON should return 404, got ' + response.status());
+    });
+
+
+    await test('/articles/ has no console errors', async () => {
+      const consoleErrors = [];
+      page.on('console', m => consoleErrors.push({ type: m.type(), text: m.text() }));
+      await page.goto(baseUrl + 'articles/', { waitUntil: 'networkidle' });
+      const pageErrors = consoleErrors.filter(e => e.type === 'error' && !e.text.includes('404'));
+      if (pageErrors.length > 0) throw new Error(`Console errors found: ${pageErrors.map(e => e.text).join('; ')}`);
+    });
+
     context.close();
   }
 
   await browser.close();
+
+  // Cleanup: remove test article files and rebuild empty index
+  try { fs.unlinkSync('articles/huong-dan-chon-macbook.json'); } catch {}
+  try { fs.unlinkSync('articles/bai-viet-bao-thao.json'); } catch {}
+  try { execSync('node tools/build-articles.mjs', { stdio: 'pipe' }); } catch {}
 
   console.log('\n=== Results ===');
   console.log(`Passed: ${results.passed}`);

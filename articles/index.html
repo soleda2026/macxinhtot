@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài viết — Mắc Xinh Tốt</title>
+  <link rel="canonical" href="https://macxinhtot.com/articles/">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --c-bg:#fbfbfd;--c-bg2:#f5f5f7;--c-white:#ffffff;
+      --c-text:#1d1d1f;--c-muted:#6e6e73;--c-blue:#0071e3;--c-blue-h:#0077ed;
+      --c-border:#d2d2d7;--r-card:16px;--nav-h:52px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--c-bg);color:var(--c-text);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    .page{max-width:1200px;margin:0 auto;padding:48px 24px}
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid rgba(0,0,0,.1)}
+    .nav__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:100%;padding:0 20px}
+    .nav__links{display:flex;flex:1;justify-content:center;gap:0}
+    .nav__links a{color:var(--c-muted);font-size:13px;padding:0 11px;height:var(--nav-h);display:flex;align-items:center;transition:color .15s;white-space:nowrap}
+    .nav__links a:hover{color:var(--c-text)}
+    .nav__actions{display:flex;gap:4px;margin-left:auto}
+    .nav__btn{background:none;border:none;color:var(--c-muted);padding:8px;border-radius:50%;font-size:17px;line-height:1}
+    .section-title{font-size:clamp(24px,4vw,32px);font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+    .section-sub{font-size:15px;color:var(--c-muted);margin-bottom:40px}
+    .articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+    .article-card{background:var(--c-white);border:.5px solid var(--c-border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,border-color .15s}
+    .article-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06);border-color:var(--c-blue)}
+    .card__cover{width:100%;height:160px;object-fit:cover;background:var(--c-bg2)}
+    .card__body{padding:20px;display:flex;flex-direction:column;flex:1}
+    .card__meta{display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+    .card__cat{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--c-blue)}
+    .card__date{font-size:11px;color:var(--c-muted)}
+    .card__title{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em;line-height:1.3}
+    .card__summary{font-size:14px;color:var(--c-muted);line-height:1.5;margin-bottom:16px;flex:1}
+    .card__link{font-size:14px;font-weight:600;color:var(--c-blue);text-decoration:underline;text-underline-offset:4px;align-self:flex-start}
+    .card__link:hover{color:var(--c-blue-h)}
+    .empty-state{text-align:center;padding:60px 24px;color:var(--c-muted)}
+    .empty-state p{font-size:16px;margin-bottom:12px}
+    .back-link{font-size:14px;color:var(--c-blue);text-decoration:underline;text-underline-offset:4px}
+    .back-link:hover{color:var(--c-blue-h)}
+    .footer{border-top:.5px solid var(--c-border);padding:32px 0;margin-top:48px}
+    .footer__links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+    .footer__link{font-size:13px;color:var(--c-muted)}
+    .footer__link:hover{color:var(--c-blue)}
+    .footer__meta{font-size:12px;color:var(--c-muted);text-align:center;margin-top:20px}
+    @media(max-width:768px){
+      .page{padding:32px 16px}
+      .articles-grid{grid-template-columns:1fr}
+      .nav__links{flex-wrap:wrap}
+      .nav__links a{font-size:10px;padding:0 4px}
+      .nav__actions{margin-left:0;order:99}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Menu chính">
+    <div class="nav__inner">
+      <div class="nav__links">
+        <a href="#laptops">Laptops</a>
+        <a href="#desktops">Desktops</a>
+        <a href="#harddrive">Hard Drive</a>
+        <a href="#accessories">Accessories</a>
+        <a href="#apps">Softwares</a>
+        <a href="/articles/" style="color:var(--c-text)">Bài viết</a>
+        <a href="#contact">Liên hệ</a>
+      </div>
+      <div class="nav__actions">
+        <button class="nav__btn" aria-label="Tìm kiếm">🔍</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+    <h1 class="section-title">Bài viết</h1>
+    <p class="section-sub">Tutorials, tin tức và hướng dẫn về Mac, iPhone và hệ sinh thái Apple.</p>
+
+    <div id="articles-grid" class="articles-grid">
+      <!-- Articles rendered here by JavaScript -->
+    </div>
+
+    <div id="articles-empty" class="empty-state" style="display:none">
+      <p>Chưa có bài viết nào.</p>
+      <p class="back-link"><a href="/">Về trang chủ</a></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__links">
+      <a class="footer__link" href="/">Trang chủ</a>
+      <a class="footer__link" href="/#apps">Softwares</a>
+      <a class="footer__link" href="#contact">Liên hệ</a>
+    </div>
+    <div class="footer__meta">Mắc Xinh Tốt · Chuyên gia Mac tại TP.HCM</div>
+  </footer>
+
+  <script>
+    (function() {
+      var grid = document.getElementById('articles-grid');
+      var empty = document.getElementById('articles-empty');
+
+      fetch('articles.json')
+        .then(function(r){ return r.ok ? r.json() : []; })
+        .then(function(articles) {
+          var published = articles.filter(function(a){ return a.draft !== true; });
+
+          if (published.length === 0) {
+            grid.style.display = 'none';
+            empty.style.display = 'block';
+            return;
+          }
+
+          grid.innerHTML = published.map(function(a){
+            var cover = a.coverImage ? '<img class="card__cover" src="'+a.coverImage+'" alt="" loading="lazy">' : '';
+            var date = a.publishedDate ? new Date(a.publishedDate).toLocaleDateString('vi-VN') : '';
+            return '<article class="article-card">'+
+              cover+
+              '<div class="card__body">'+
+                '<div class="card__meta">'+
+                  (a.category ? '<span class="card__cat">'+a.category+'</span>' : '')+
+                  (date ? '<span class="card__date">'+date+'</span>' : '')+
+                '</div>'+
+                '<h2 class="card__title">'+a.name+'</h2>'+
+                '<p class="card__summary">'+(a.summary||'')+'</p>'+
+                '<a class="card__link" href="article.html?slug='+a.slug+'">Đọc tiếp &rarr;</a>'+
+              '</div>'+
+            '</article>';
+          }).join('');
+        })
+        .catch(function(){
+          grid.style.display = 'none';
+          empty.style.display = 'block';
+        });
+    })();
+  </script>
+</body>
+</html>

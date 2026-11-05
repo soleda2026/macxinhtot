@@ -77,13 +77,13 @@
   <nav class="nav" role="navigation" aria-label="Menu chính">
     <div class="nav__inner">
       <div class="nav__links">
-        <a href="#laptops">Laptops</a>
-        <a href="#desktops">Desktops</a>
-        <a href="#harddrive">Hard Drive</a>
-        <a href="#accessories">Accessories</a>
-        <a href="#apps">Softwares</a>
+        <a href="/#laptops">Laptops</a>
+        <a href="/#desktops">Desktops</a>
+        <a href="/#harddrive">Hard Drive</a>
+        <a href="/#accessories">Accessories</a>
+        <a href="/#apps">Softwares</a>
         <a href="/articles/" style="color:var(--c-text)">Bài viết</a>
-        <a href="#contact">Liên hệ</a>
+        <a href="/#contact">Liên hệ</a>
       </div>
       <div class="nav__actions">
         <button class="nav__btn" aria-label="Tìm kiếm">🔍</button>
@@ -157,6 +157,14 @@
 
     function inline(md) {
       var text = String(md || '');
+      // Stash images ![alt](url) so they survive HTML escaping
+      var images = [];
+      text = text.replace(/!\[([^\]]*)\]\(([^)]*)\)/g, function(m, alt, url){
+        var safeUrl = /^https?:\/\//i.test(url) ? url : '#';
+        var img = '<img src="'+escapeHtml(safeUrl)+'" alt="'+escapeHtml(alt)+'" loading="lazy">';
+        images.push(img);
+        return '\x00IMG' + (images.length - 1) + '\x00';
+      });
       // Links [text](url) — escape URL
       text = text.replace(/\[([^\]]*)\]\(([^)]*)\)/g, function(m, label, url){
         var safeUrl = /^https?:\/\//i.test(url) ? url : '#';
@@ -173,6 +181,10 @@
       text = text.replace(/&lt;em&gt;(.*?)&lt;\/em&gt;/g, '<em>$1</em>');
       text = text.replace(/&lt;a href="([^"]*)&quot;([^"]*)&quot;"&gt;/g, '<a href="$1$2">');
       text = text.replace(/&lt;\/a&gt;/g, '</a>');
+      // Restore stashed images
+      images.forEach(function(img, i){
+        text = text.replace('\x00IMG' + i + '\x00', img);
+      });
       return text;
     }
 

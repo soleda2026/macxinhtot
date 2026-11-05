@@ -142,9 +142,16 @@ content:
 
   - name: articles
     label: Bài viết
-    type: file
+    type: collection
     path: articles/
     format: json
+    filename: "{fields.slug}.json"
+    exclude:
+      - articles.json
+    view:
+      primary: title
+      sort: publishedDate
+      order: desc
     fields:
       - name: title
         label: Tiêu đề
@@ -171,11 +178,20 @@ content:
         description: Mô tả ngắn hiển thị trên trang liệt kê bài viết.
       - name: body
         label: Nội dung
-        type: text
+        type: rich-text
+        options:
+          format: markdown
+          media: content_images
+          path: articles
+          rename: safe
+          switcher: true
         description: Nội dung bài viết định dạng Markdown.
       - name: publishedDate
         label: Ngày đăng
-        type: datetime
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd'T'HH:mm:ssXXX
         description: Ngày xuất bản bài viết.
       - name: draft
         label: BẢo thảo

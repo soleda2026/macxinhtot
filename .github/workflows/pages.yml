@@ -25,13 +25,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Build article index
+      - name: Build article index (staging output)
         run: node tools/build-articles.mjs
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
 
   deploy:
     environment:

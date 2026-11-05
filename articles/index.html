@@ -61,13 +61,13 @@
   <nav class="nav" role="navigation" aria-label="Menu chính">
     <div class="nav__inner">
       <div class="nav__links">
-        <a href="#laptops">Laptops</a>
-        <a href="#desktops">Desktops</a>
-        <a href="#harddrive">Hard Drive</a>
-        <a href="#accessories">Accessories</a>
-        <a href="#apps">Softwares</a>
+        <a href="/#laptops">Laptops</a>
+        <a href="/#desktops">Desktops</a>
+        <a href="/#harddrive">Hard Drive</a>
+        <a href="/#accessories">Accessories</a>
+        <a href="/#apps">Softwares</a>
         <a href="/articles/" style="color:var(--c-text)">Bài viết</a>
-        <a href="#contact">Liên hệ</a>
+        <a href="/#contact">Liên hệ</a>
       </div>
       <div class="nav__actions">
         <button class="nav__btn" aria-label="Tìm kiếm">🔍</button>
@@ -100,6 +100,13 @@
 
   <script>
     (function() {
+      function esc(v){
+        return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
+          return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+        });
+      }
+      function safeUrl(v){ return /^https?:\/\//i.test(v || '') ? v : '#'; }
+
       var grid = document.getElementById('articles-grid');
       var empty = document.getElementById('articles-empty');
 
@@ -115,18 +122,18 @@
           }
 
           grid.innerHTML = published.map(function(a){
-            var cover = a.coverImage ? '<img class="card__cover" src="'+a.coverImage+'" alt="" loading="lazy">' : '';
+            var cover = a.coverImage ? '<img class="card__cover" src="'+esc(safeUrl(a.coverImage))+'" alt="" loading="lazy">' : '';
             var date = a.publishedDate ? new Date(a.publishedDate).toLocaleDateString('vi-VN') : '';
             return '<article class="article-card">'+
               cover+
               '<div class="card__body">'+
                 '<div class="card__meta">'+
-                  (a.category ? '<span class="card__cat">'+a.category+'</span>' : '')+
-                  (date ? '<span class="card__date">'+date+'</span>' : '')+
+                  (a.category ? '<span class="card__cat">'+esc(a.category)+'</span>' : '')+
+                  (date ? '<span class="card__date">'+esc(date)+'</span>' : '')+
                 '</div>'+
-                '<h2 class="card__title">'+a.name+'</h2>'+
-                '<p class="card__summary">'+(a.summary||'')+'</p>'+
-                '<a class="card__link" href="article.html?slug='+a.slug+'">Đọc tiếp &rarr;</a>'+
+                '<h2 class="card__title">'+esc(a.title)+'</h2>'+
+                '<p class="card__summary">'+esc(a.summary||'')+'</p>'+
+                '<a class="card__link" href="article.html?slug='+esc(a.slug)+'">Đọc tiếp &rarr;</a>'+
               '</div>'+
             '</article>';
           }).join('');

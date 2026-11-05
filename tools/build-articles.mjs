@@ -5,6 +5,10 @@
 // Published article source files are never modified.
 // Draft article source files are never deleted from the developer's working tree.
 // Deployment-only filtering occurs in the isolated staging directory.
+//
+// The staging copy uses an explicit ALLOWLIST of public website resources.
+// Anything not on the allowlist (.git, .github, .pages.yml, tools/, backups/,
+// node_modules, env files, credentials, fixtures, etc.) is excluded from dist/.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,6 +18,30 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const articlesDir = path.join(root, 'articles');
 const outDir = path.join(root, process.argv[2] || 'dist');
 const outArticlesDir = path.join(outDir, 'articles');
+
+// Explicit allowlist of public website resources.
+// Files not on this list are never deployed, even if newly created.
+const ALLOWED_ROOT_FILES = new Set([
+  'index.html',   // homepage
+  'CNAME',        // custom domain
+  'products.json', // product data
+  'softwares.json', // software data
+  'MacXinhTot-01.jpg', // public asset
+]);
+
+const ALLOWED_ROOT_DIRS = new Set([
+  'articles', // index.html, article.html + regenerated articles.json + published article JSONs
+  'assets',   // svd-icon.png, uploads/, vendor/ (marked + DOMPurify)
+  'svd',      // svd/index.html
+]);
+
+// Within articles/, only these files are copied as-is from source.
+// Source article *.json files are excluded — they are regenerated below
+// from validated, published articles only.
+const ALLOWED_ARTICLES_FILES = new Set([
+  'index.html',
+  'article.html',
+]);
 
 let failures = 0;
 const fail = (message) => {
@@ -82,16 +110,32 @@ function slugify(text) {
     .replace(/^-+|-+$/g, '');
 }
 
-function copyEntries(srcDir, destDir, skipJson) {
+function copyFile(src, dest) {
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
+}
+
+function copyDirContents(srcDir, destDir) {
   fs.mkdirSync(destDir, { recursive: true });
   for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
     const src = path.join(srcDir, entry.name);
     const dest = path.join(destDir, entry.name);
-    if (skipJson && entry.name.endsWith('.json')) continue;
     if (entry.isDirectory()) {
-      fs.cpSync(src, dest, { recursive: true, dereference: true });
+      copyDirContents(src, dest);
     } else {
-      fs.cpSync(src, dest, { dereference: true });
+      copyFile(src, dest);
+    }
+  }
+}
+
+function copyAllowedArticles(srcDir, destDir) {
+  // Copy only explicitly allowed non-JSON files (index.html, article.html).
+  // Source article *.json files are excluded — regenerated below.
+  fs.mkdirSync(destDir, { recursive: true });
+  for (const name of ALLOWED_ARTICLES_FILES) {
+    const src = path.join(srcDir, name);
+    if (fs.existsSync(src)) {
+      copyFile(src, path.join(destDir, name));
     }
   }
 }
@@ -101,19 +145,27 @@ function main() {
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(outDir, { recursive: true });
 
-  // Copy the static site into staging, excluding source article JSON files
-  // (they are regenerated below from validated, published articles only).
-  const exclude = new Set(['.git', 'backups', 'node_modules', path.basename(outDir)]);
-  for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
-    if (exclude.has(entry.name)) continue;
-    const src = path.join(root, entry.name);
-    const dest = path.join(outDir, entry.name);
-    if (entry.name === 'articles') {
-      copyEntries(src, dest, true); // skip source *.json
-    } else if (entry.isDirectory()) {
-      fs.cpSync(src, dest, { recursive: true, dereference: true });
+  // Copy only explicitly allowed public resources from root into staging.
+  // Denylist approach replaced by allowlist: new dev files are never accidentally deployed.
+  for (const name of ALLOWED_ROOT_FILES) {
+    const src = path.join(root, name);
+    if (fs.existsSync(src)) {
+      copyFile(src, path.join(outDir, name));
     } else {
-      fs.cpSync(src, dest, { dereference: true });
+      fail(`Allowed public resource missing: ${name}`);
+    }
+  }
+
+  for (const name of ALLOWED_ROOT_DIRS) {
+    const src = path.join(root, name);
+    if (!fs.existsSync(src)) {
+      fail(`Allowed public directory missing: ${name}`);
+      continue;
+    }
+    if (name === 'articles') {
+      copyAllowedArticles(src, path.join(outDir, name));
+    } else {
+      copyDirContents(src, path.join(outDir, name));
     }
   }
 

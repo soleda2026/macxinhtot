@@ -113,79 +113,37 @@
     <div class="footer__meta">Mắc Xinh Tốt · Chuyên gia Mac tại TP.HCM</div>
   </footer>
 
+  <!-- Locally hosted, version-pinned Markdown parser + DOM sanitizer.
+       No external CDN is required at render time. -->
+  <script src="/assets/vendor/marked.min.js"></script>
+  <script src="/assets/vendor/dompurify.min.js"></script>
   <script>
-    // Minimal Markdown-to-HTML with XSS protection
+    // marked v12.0.0 (MIT) and DOMPurify v3.2.3 (Apache-2.0 / MPL-2.0)
+    // are loaded above as globals: window.marked, window.DOMPurify.
+    // See assets/vendor/LICENSE.marked and assets/vendor/LICENSE.dompurify.
+
+    // Allow only http(s) image URLs; everything else falls back to '#'.
+    function safeUrl(v) { return /^https?:\/\//i.test(v || '') ? v : '#'; }
+
+    // Escape HTML entities for safe attribute/text insertion.
     function escapeHtml(text) {
-      return String(text).replace(/[&<>"']/g, function(c){
+      return String(text == null ? '' : text).replace(/[&<>"']/g, function(c){
         return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
       });
     }
 
-    function markdownToHtml(md) {
-      var text = String(md || '');
-      // Horizontal rules
-      text = text.replace(/^---+\s*$/gm, '<hr>');
-      // Headings (###, ##, #)
-      text = text.replace(/^(#{1,6})\s+(.+)$/gm, function(m, hashes, content){
-        var level = hashes.length;
-        return '<h'+level+'>'+inline(content)+'</h'+level+'>';
+    function renderMarkdown(md) {
+      if (!md) return '';
+      var html = marked.parse(String(md));
+      html = DOMPurify.sanitize(html, { ADD_ATTR: ['loading'] });
+      // Add loading="lazy" to images (ADD_ATTR only permits the attribute; it does not set it)
+      html = html.replace(/<img\b([^>]*?)(\/?)>/gi, function(m, attrs, close){
+        if (!/loading\s*=/i.test(attrs)) {
+          return '<img' + attrs + ' loading="lazy"' + close + '>';
+        }
+        return m;
       });
-      // Blockquotes
-      text = text.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
-      // Lists (- item)
-      text = text.replace(/^(-|\*|\+)\s+(.+)$/gm, '<li>$2</li>');
-      // Wrap consecutive <li> in <ul>
-      text = text.replace(/(<li>.*<\/li>)(\s*)(<li>.*<\/li>)/gs, function(m, a, b, c){
-        return '<ul>'+a+c+'</ul>';
-      });
-      // Wrap standalone <li>
-      text = text.replace(/(?:^|\n)(<li>.*<\/li>)/g, '<ul>$1</ul>');
-      // Paragraphs: split on blank lines
-      var parts = text.split(/\n\s*\n/);
-      text = parts.map(function(p){
-        p = p.trim();
-        if (!p) return '';
-        // Skip already-wrapped block elements
-        if (/^<(h[1-6]|blockquote|ul|hr|li)>/.test(p)) return p;
-        return '<p>'+inline(p)+'</p>';
-      }).join('\n');
-      // Clean up empty paragraphs and extra newlines
-      text = text.replace(/<p>\s*<\/p>/g, '');
-      text = text.replace(/\n+/g, '');
-      return text;
-    }
-
-    function inline(md) {
-      var text = String(md || '');
-      // Stash images ![alt](url) so they survive HTML escaping
-      var images = [];
-      text = text.replace(/!\[([^\]]*)\]\(([^)]*)\)/g, function(m, alt, url){
-        var safeUrl = /^https?:\/\//i.test(url) ? url : '#';
-        var img = '<img src="'+escapeHtml(safeUrl)+'" alt="'+escapeHtml(alt)+'" loading="lazy">';
-        images.push(img);
-        return '\x00IMG' + (images.length - 1) + '\x00';
-      });
-      // Links [text](url) — escape URL
-      text = text.replace(/\[([^\]]*)\]\(([^)]*)\)/g, function(m, label, url){
-        var safeUrl = /^https?:\/\//i.test(url) ? url : '#';
-        return '<a href="'+escapeHtml(safeUrl)+'">'+inline(label)+'</a>';
-      });
-      // Bold **text**
-      text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-      // Italic *text* (not followed by another *)
-      text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-      // Escape remaining HTML
-      text = escapeHtml(text);
-      // Re-insert the tags we created (they were escaped)
-      text = text.replace(/&lt;strong&gt;(.*?)&lt;\/strong&gt;/g, '<strong>$1</strong>');
-      text = text.replace(/&lt;em&gt;(.*?)&lt;\/em&gt;/g, '<em>$1</em>');
-      text = text.replace(/&lt;a href="([^"]*)&quot;([^"]*)&quot;"&gt;/g, '<a href="$1$2">');
-      text = text.replace(/&lt;\/a&gt;/g, '</a>');
-      // Restore stashed images
-      images.forEach(function(img, i){
-        text = text.replace('\x00IMG' + i + '\x00', img);
-      });
-      return text;
+      return html;
     }
 
     (function() {
@@ -216,9 +174,9 @@
           document.title = article.title + ' — Mắc Xinh Tốt';
           pageTitle.textContent = article.title + ' — Mắc Xinh Tốt';
 
-          var cover = article.coverImage ? '<img class="article__cover" src="'+escapeHtml(article.coverImage)+'" alt="">' : '';
+          var cover = article.coverImage ? '<img class="article__cover" src="'+safeUrl(article.coverImage)+'" alt="">' : '';
           var date = article.publishedDate ? new Date(article.publishedDate).toLocaleDateString('vi-VN') : '';
-          var bodyHtml = markdownToHtml(article.body);
+          var bodyHtml = renderMarkdown(article.body);
 
           container.innerHTML = ''+
             (article.coverImage ? cover : '')+

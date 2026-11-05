@@ -150,8 +150,11 @@ content:
       - articles.json
     view:
       primary: title
-      sort: publishedDate
-      order: desc
+      fields: [title, category, publishedDate]
+      sort: [publishedDate, title]
+      default:
+        sort: publishedDate
+        order: desc
     fields:
       - name: title
         label: Tiêu đề

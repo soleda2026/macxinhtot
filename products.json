@@ -3,25 +3,34 @@
     {
       "tag": "Bán nhiều nhất",
       "name": "MacBook Pro 14\" M1 Pro",
-      "image": "",
-      "desc": "Chip M1 Pro · 16GB · 1TB SSD · Liquid Retina XDR ·",
-      "chips": ["M1 Pro", "16GB", "1TB"],
+      "desc": "CPU M1 Pro\n14Core GPU\n16GB RAM\n512GB SSD\n14\" Liquid Retina XDR\nEnglish Keyboard layout.\nCome with Charger and Magsafe3 cable.\nColor: Black.",
+      "chips": [
+        "M1 Pro",
+        "16GB",
+        "512GB"
+      ],
       "price": "25.990.000₫"
     },
     {
       "tag": "Nhẹ nhất, Siêu mỏng, Sky Blue· M5",
       "name": "MacBook Air 13\" M5",
-      "image": "",
       "desc": "Chip M5 · 16GB · 512GB SSD · Liquid Retina · 18h pin · 1.51kg",
-      "chips": ["M5", "16GB", "13\""],
+      "chips": [
+        "M5",
+        "16GB",
+        "13\""
+      ],
       "price": "28.990.000₫"
     },
     {
       "tag": "Pro · Hiệu năng cao",
       "name": "MacBook Pro 16\" M4 Pro , Máy MDM",
-      "image": "",
       "desc": "Chip M4 Pro · 48GB · 512GB · 16.2\" ProMotion 120Hz ·",
-      "chips": ["M4 Pro", "48GB", "512GB"],
+      "chips": [
+        "M4 Pro",
+        "48GB",
+        "512GB"
+      ],
       "price": "45.990.000₫"
     }
   ],
@@ -29,25 +38,33 @@
     {
       "tag": "Compact · Mạnh mẽ",
       "name": "Mac mini M4",
-      "image": "",
       "desc": "Chip M4 · 16GB · 256GB SSD · 3× Thunderbolt 4 · Nhỏ gọn, tiết kiệm điện",
-      "chips": ["M4", "16GB", "3× TB4"],
+      "chips": [
+        "M4",
+        "16GB",
+        "3× TB4"
+      ],
       "price": "16.990.000₫"
     },
     {
       "tag": "All-in-One · 4.5K Retina",
       "name": "iMac 24\" M4",
-      "image": "",
       "desc": "Chip M4 · 24GB · 1TB · Retina 4.5K · Mỏng 11.5mm · 7 màu sắc",
-      "chips": ["M4", "4.5K", "24GB"],
+      "chips": [
+        "M4",
+        "4.5K",
+        "24GB"
+      ],
       "price": "47.990.000₫"
     },
     {
       "tag": "Workstation cao cấp",
       "name": "Mac Studio M4 Max",
-      "image": "",
       "desc": "M4 Max · 36GB · 512GB · Đỉnh cao sáng tạo",
-      "chips": ["M4 Max", "36GB"],
+      "chips": [
+        "M4 Max",
+        "36GB"
+      ],
       "price": "59.990.000₫"
     }
   ],
@@ -55,25 +72,31 @@
     {
       "tag": "SSD Di động · Nhanh nhất",
       "name": "OWC Express 1M2 2TB",
-      "image": "",
       "desc": "USB_TypeC 4.0 · 2,800 MB/s · Nhôm nguyên khối, tản nhiệt thụ động",
-      "chips": ["2TB", "2800 MB/s"],
+      "chips": [
+        "2TB",
+        "2800 MB/s"
+      ],
       "price": "7.990.000₫"
     },
     {
       "tag": "HDD · Backup dữ liệu",
       "name": "WD Elements Portable 4TB",
-      "image": "",
       "desc": "USB 3.0 · Tương thích macOS · Backup Time Machine đơn giản",
-      "chips": ["4TB", "USB 3.0"],
+      "chips": [
+        "4TB",
+        "USB 3.0"
+      ],
       "price": "2.290.000₫"
     },
     {
       "tag": "SSD NVMe · Nâng cấp Mac",
       "name": "Apple SSD Kit Pro 2TB",
-      "image": "",
       "desc": "Apple NVMe · 3,500 MB/s đọc · Nâng cấp Mac Pro 2019 và iMac Pro",
-      "chips": ["Apple SSD", "3500 MB/s"],
+      "chips": [
+        "Apple SSD",
+        "3500 MB/s"
+      ],
       "price": "4.990.000₫"
     }
   ],
@@ -81,33 +104,25 @@
     {
       "tag": "AirPods · Chống ồn ANC",
       "name": "AirPods Pro 2 (USB-C)",
-      "image": "",
       "desc": "Chip H2 · ANC tốt nhất · Sạc MagSafe · IP54 · Âm thanh Spatial",
-      "chips": [],
       "price": "6.990.000₫"
     },
     {
       "tag": "Magic Mouse · Chính hãng",
       "name": "Apple Magic Mouse",
-      "image": "",
       "desc": "Multi-Touch · Bluetooth · Thiết kế mỏng thanh lịch · Sạc USB-C",
-      "chips": [],
       "price": "2.690.000₫"
     },
     {
       "tag": "Hub · USB_TypeC 4.0",
       "name": "RayCue Hub & Stand",
-      "image": "",
       "desc": "1 cổng USB A · Khe cắm SSD Nvme",
-      "chips": [],
       "price": "1.990.000₫"
     },
     {
       "tag": "Màn hình · 5K Pro",
       "name": "Apple Studio Display",
-      "image": "",
       "desc": "27\" · Retina 5K · Thunderbolt 3 · 96W sạc MacBook · Camera 12MP",
-      "chips": [],
       "price": "55.990.000₫"
     }
   ]

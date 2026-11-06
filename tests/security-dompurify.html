@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOMPurify 3.4.17 security regression</title>
+</head>
+<body>
+<pre id="results"></pre>
+<script id="vendor-marked" src="/assets/vendor/marked.min.js"></script>
+<script id="vendor-dompurify" src="/assets/vendor/dompurify.min.js"></script>
+<script>
+(function () {
+  var out = [];
+  function check(name, cond, detail) {
+    out.push((cond ? 'PASS' : 'FAIL') + '  ' + name + (detail ? ' :: ' + detail : ''));
+  }
+  function el(id) { return document.getElementById(id); }
+
+  // Same render path as articles/article.html
+  function renderMarkdown(md) {
+    if (!md) return '';
+    var html = marked.parse(String(md));
+    return DOMPurify.sanitize(html, { ADD_ATTR: ['loading'] });
+  }
+
+  // 1. Correct Markdown rendering
+  var m = renderMarkdown('# Hello world\n\n**bold** and [link](https://example.com)');
+  check('Markdown renders h1', /<h1[^>]*>Hello world<\/h1>/.test(m), m.slice(0, 80));
+  check('Markdown renders strong', /<strong[^>]*>bold<\/strong>/.test(m));
+  check('Markdown renders anchor', /<a[^>]*href="https:\/\/example\.com"[^>]*>link<\/a>/.test(m));
+
+  // 2. No executable HTML injection (script stripped)
+  var s = DOMPurify.sanitize('<script>alert(1)</' + 'script><p>text</' + 'p>');
+  check('Script element removed', s.indexOf('<script') === -1 && s.indexOf('alert') === -1, s);
+  check('Safe text retained', s.indexOf('text') !== -1, s);
+
+  // 3. Unsafe URL rejection (javascript:, data:, vbscript:)
+  var u1 = DOMPurify.sanitize('<a href="javascript:alert(1)">x</a>');
+  check('javascript: href rejected', u1.indexOf('javascript:') === -1, u1);
+  var u2 = DOMPurify.sanitize('<a href="data:text/html,<script>">x</a>');
+  check('data: href rejected', u2.indexOf('data:') === -1, u2);
+  var u3 = DOMPurify.sanitize('<a href="vbscript:alert(1)">x</a>');
+  check('vbscript: href rejected', u3.indexOf('vbscript:') === -1, u3);
+  var u4 = DOMPurify.sanitize('<img src="javascript:alert(1)">');
+  check('javascript: src rejected', u4.indexOf('javascript:') === -1, u4);
+
+  // 4. HTML attribute neutralization (event handlers)
+  var a1 = DOMPurify.sanitize('<div onclick="alert(1)">x</div>');
+  check('onclick removed', a1.indexOf('onclick') === -1, a1);
+  var a2 = DOMPurify.sanitize('<img src=x onerror=alert(1)>');
+  check('onerror removed', a2.indexOf('onerror') === -1, a2);
+  var a3 = DOMPurify.sanitize('<body onload=alert(1)>x</body>');
+  check('onload removed', a3.indexOf('onload') === -1, a3);
+
+  // 5. marked + DOMPurify integration: unsafe markdown link neutralized
+  var m2 = renderMarkdown('[x](javascript:alert(1))');
+  check('Markdown javascript link neutralized', m2.indexOf('javascript:') === -1 && m2.indexOf('alert') === -1, m2);
+  var m3 = renderMarkdown('<img src=x onerror=alert(1)>');
+  check('Markdown raw HTML event neutralized', m3.indexOf('onerror') === -1 && m3.indexOf('alert') === -1, m3);
+
+  // 6. Prototype pollution bypass: named-property clobbering neutralized.
+  // Default DOMPurify (SANITIZE_DOM) removes ids that would clobber built-ins
+  // (__proto__ and constructor live on document); prototype is not clobberable,
+  // but must not introduce executable injection.
+  var p1 = DOMPurify.sanitize('<a id="__proto__">x</a>');
+  check('__proto__ id removed (no clobber)', p1.indexOf('id="__proto__"') === -1, p1);
+  var p3 = DOMPurify.sanitize('<a id="constructor">x</a>');
+  check('constructor id removed (no clobber)', p3.indexOf('id="constructor"') === -1, p3);
+  var p2 = DOMPurify.sanitize('<a id="prototype">x</a>');
+  check('prototype id has no executable injection', p2.indexOf('<script') === -1 && p2.indexOf('alert') === -1, p2);
+
+  // 7. Safe https/http links preserved
+  var u5 = DOMPurify.sanitize('<a href="https://example.com">ok</a>');
+  check('https link preserved', u5.indexOf('https://example.com') !== -1, u5);
+
+  // 8. Sanitizer API stable / version
+  check('DOMPurify version 3.4.17', typeof DOMPurify.version === 'string' && DOMPurify.version.indexOf('3.4.17') === 0, DOMPurify.version);
+  check('DOMPurify.sanitize is function', typeof DOMPurify.sanitize === 'function');
+
+  // 9. marked + DOMPurify no runtime CDN (both already loaded from local vendor)
+  check('marked loaded as window.marked', typeof window.marked === 'object' || typeof marked === 'object');
+  check('DOMPurify loaded as window.DOMPurify', typeof window.DOMPurify === 'function' || typeof DOMPurify === 'function');
+
+  var failed = out.filter(function (l) { return l.indexOf('FAIL') === 0; }).length;
+  var results = out.join('\n') + '\n\n' + (failed === 0 ? 'ALL SECURITY CHECKS PASS' : failed + ' SECURITY CHECK(S) FAILED');
+  el('results').textContent = results;
+  window.__securityTestDone = true;
+  window.__securityTestFailed = failed > 0;
+  document.title = 'SECURITY_RESULTS::' + JSON.stringify({ failed: failed > 0, checks: results });
+  console.log(results);
+})();
+</script>
+</body>
+</html>
